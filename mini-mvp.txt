@@ -1,0 +1,26 @@
+[
+  {
+    placeId: 'iuahd3cfw',
+    timestamp: '2014-22-34 32:33',
+    userId: 22,
+    dishes: [
+        title: 'Vegetable Bastilla',
+        img: 'https://s3.aws.com/blahblahblah',
+        comment: 'This is very good but would be better without arsenic. gurggglegaaaah'
+      },
+      { /* ... */ }
+    ]
+  }, /* .... */
+]
+
+- Feed (experience searching)
+  - Postgres full text search; look at https://github.com/Casecommons/pg_search or Textacular
+  - Backend place name -> placeId conversion
+- Create experience
+  - Place autocomplete
+  - Image upload
+
+
+- Experience details view
+- OAuth (omniauth + devise)
+
