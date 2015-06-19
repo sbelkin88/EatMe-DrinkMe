@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 20150618235900) do
   add_index "dishes", ["experience_id"], name: "index_dishes_on_experience_id", using: :btree
 
   create_table "experiences", force: :cascade do |t|
-    t.string   "unique_place_id", null: false
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "venue_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
+  add_index "experiences", ["venue_id"], name: "index_experiences_on_venue_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
@@ -58,6 +59,19 @@ ActiveRecord::Schema.define(version: 20150618235900) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "venues", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "address",    null: false
+    t.string   "city",       null: false
+    t.string   "state",      null: false
+    t.string   "zip",        null: false
+    t.string   "phone",      null: false
+    t.string   "website",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "dishes", "experiences"
   add_foreign_key "experiences", "users"
+  add_foreign_key "experiences", "venues"
 end
