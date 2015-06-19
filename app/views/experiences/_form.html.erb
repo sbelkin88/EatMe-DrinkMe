@@ -1,5 +1,14 @@
 <%= form_for @experience do |f| %>
   <input id="autocomplete" type="text" name="venue" placeholder="Venue Name"/>
+  <form>
+    <input type="hidden" name="name" value=""/>
+    <input type="hidden" name="street_number" value=""/>
+    <input type="hidden" name="locality" value=""/>
+    <input type="hidden" name="administrative_area_level_1" value=""/>
+    <input type="hidden" name="postal_code" value=""/>
+    <input type="hidden" name="formatted_phone_number" value=""/>
+    <input type="hidden" name="website" value=""/>
+  </form>
 
   <h4>Dishes:</h4>
   <%= f.fields_for @experience.dishes.build do |dish_form| %>
