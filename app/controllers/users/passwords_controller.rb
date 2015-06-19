@@ -1,4 +1,6 @@
 class Users::PasswordsController < Devise::PasswordsController
+  # TODO make devise controllers inherit from applicationController ??
+
   # GET /resource/password/new
   # def new
   #   super
