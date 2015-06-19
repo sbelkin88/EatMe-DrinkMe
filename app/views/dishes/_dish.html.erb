@@ -1,6 +1,7 @@
 <li>
   <%= dish.title %>
   <ul>
+    <li><%= image_tag @dish.dishpicture.url(:thumb) %></li>
     <li><%= dish.review %></li>
   </ul>
 </li>
