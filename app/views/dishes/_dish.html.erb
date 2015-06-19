@@ -1,9 +1,7 @@
 <li>
   <%= dish.title %>
   <ul>
-    <% unless dish.pic_url == nil || dish.pic_url == ""%>
-      <li><%= dish.pic_url %></li>
-    <% end %>
+    <li><%= image_tag dish.dishpicture.url(:thumb) %></li>
     <li><%= dish.review %></li>
   </ul>
 </li>

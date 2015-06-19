@@ -23,11 +23,15 @@
     </p>
     <p>
       <%= dish_form.label :Picture %>
-      <%= dish_form.text_field :pic_url %>
+      <%= dish_form.file_field :dishpicture %>
     </p>
     <p>
       <%= dish_form.label :Review %>
       <%= dish_form.text_area :review %>
+    </p>
+
+    <p>
+      <input type="text" name="dish_location" placeholder="location"/>
     </p>
   <% end %>
   <%= f.submit %>

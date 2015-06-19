@@ -1,10 +1,14 @@
 <h1>All Experiences</h1>
+<%= form_tag search_path do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
 <% if @experiences %>
-  <% if params[:user] %>
-    <div><%= link_to 'Explore', experiences_path %></div>
-  <% else %>
-    <div><%= link_to 'My Experiences', experiences_path(user: "3") %></div>
-  <% end %>
+  <div>
+    <%= link_to 'Explore', experiences_path %>
+    <%= link_to 'My Experiences', experiences_path(user: "3") %>
+  </div>
+
   <% @experiences.each do |experience| %>
     <%= link_to "#{experience.venue.name}", experience_path(experience) %>
     <% if experience.dishes %>

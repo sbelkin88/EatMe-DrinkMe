@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :experiences do
     resources :dishes
   end
-  
+  post 'search', :to => 'experiences#search'
   root 'welcome#index'
 
 end

@@ -1,6 +1,6 @@
 class Experience < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => :venue
+  pg_search_scope :venue_search, :associated_against => {:venue => [:name, :city]}
   belongs_to :user
   has_many :dishes
   belongs_to :venue
