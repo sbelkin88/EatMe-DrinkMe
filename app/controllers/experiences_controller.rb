@@ -7,6 +7,16 @@ class ExperiencesController < ApplicationController
   def index
     if params[:user]
       @experiences = Experience.where(user_id: params[:user])
+    elsif params[:search]
+      @experiences = []
+      PgSearch.multisearch(params[:search]).each do |object|
+        if object.searchable_type == "Dish"
+          @experiences << object.searchable.experience unless @experiences.include?(object.searchable.experience)
+        elsif object.searchable_type == "User"
+          @experiences += object.searchable.experiences
+        end
+      end
+      @experiences += Experience.venue_search(params[:search])
     else
       @experiences = Experience.all.includes(:dishes)
     end
@@ -33,9 +43,13 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find_by(id: params[:id])
   end
 
+  def search
+    redirect_to :action => "index", :search => params[:search]
+  end
+
   private
 
   def experience_params
-    params.require(:experience).permit(dish: [:id, :title, :pic_url, :review])
+    params.require(:experience).permit(dish: [:id, :title, :dishpicture, :review])
   end
 end
