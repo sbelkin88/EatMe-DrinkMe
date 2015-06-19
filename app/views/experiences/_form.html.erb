@@ -1,0 +1,22 @@
+<%= form_for @experience do |f| %>
+  <p>
+    <%= f.label :Restaurant %>
+    <%= f.text_field :unique_place_id %>
+  </p>
+
+  <%= f.fields_for @experience.dishes.build do |dish_form| %>
+    <p>
+      <%= dish_form.label :Dish %>
+      <%= dish_form.text_field :title %>
+    </p>
+    <p>
+      <%= dish_form.label :Picture %>
+      <%= dish_form.text_field :pic_url %>
+    </p>
+    <p>
+      <%= dish_form.label :Review %>
+      <%= dish_form.text_area :review %>
+    </p>
+  <% end %>
+  <%= f.submit %>
+<% end %>
