@@ -1,0 +1,34 @@
+<%= form_for @experience do |f| %>
+  <input type="text" name="venue" placeholder="Venue Name"/>
+
+  <h4>Dishes:</h4>
+  <%= f.fields_for @experience.dishes.build do |dish_form| %>
+    <% @experience.dishes.each do |dish| %>
+      <% if dish.errors.any? %>
+        <div id = 'error_explanation'>
+          <h2>
+            <%= pluralize(dish.errors.count,'error') %> Prohibited this Dish from saving:
+          </h2>
+          <ul>
+            <% dish.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+    <p>
+      <%= dish_form.label :Dish %>
+      <%= dish_form.text_field :title %>
+    </p>
+    <p>
+      <%= dish_form.label :Picture %>
+      <%= dish_form.text_field :pic_url %>
+    </p>
+    <p>
+      <%= dish_form.label :Review %>
+      <%= dish_form.text_area :review %>
+    </p>
+  <% end %>
+  <%= f.submit %>
+<% end %>
