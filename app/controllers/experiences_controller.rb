@@ -5,7 +5,11 @@ class ExperiencesController < ApplicationController
 	end
 
   def index
-    @experiences = Experience.all.includes(:dishes)
+    if params[:user]
+      @experiences = Experience.where(user_id: params[:user])
+    else
+      @experiences = Experience.all.includes(:dishes)
+    end
   end
 
   def new
@@ -16,21 +20,17 @@ class ExperiencesController < ApplicationController
 
   def create
     @venue = Venue.new(name: params[:venue], address: "Broadway", city: "New York", state: "NY", zip: "10024", phone: "212-222-2222", website: "www.nyc.com")
-    if @venue.save
-      @experience = User.first.experiences.build(venue: @venue)
-      if @experience.save
-        @dish = @experience.dishes.build(experience_params[:dish])
-        if @dish.save
-          redirect_to experiences_path
-        else
-          render :new
-        end
-      else
-        render :new
-      end
+    @experience = User.last.experiences.build(venue: @venue)
+    @dish = @experience.dishes.build(experience_params[:dish])
+    if @venue.save && @experience.save && @dish.save
+      redirect_to experiences_path
     else
       render :new
     end
+  end
+
+  def show
+    @experience = Experience.find_by(id: params[:id])
   end
 
   private

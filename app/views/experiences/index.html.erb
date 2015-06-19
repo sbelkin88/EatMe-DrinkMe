@@ -1,7 +1,12 @@
 <h1>All Experiences</h1>
 <% if @experiences %>
+  <% if params[:user] %>
+    <div><%= link_to 'Explore', experiences_path %></div>
+  <% else %>
+    <div><%= link_to 'My Experiences', experiences_path(user: "3") %></div>
+  <% end %>
   <% @experiences.each do |experience| %>
-    <%= link_to "#{experience.venue.name}", venue_path(experience.venue) %>
+    <%= link_to "#{experience.venue.name}", experience_path(experience) %>
     <% if experience.dishes %>
       <ul>
         <%= render partial: experience.dishes %>
