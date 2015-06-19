@@ -1,6 +1,7 @@
 class DishesController < ApplicationController
 
 	def show
+		@experience = Experience.find(params[:experience_id])
 		@dish = Dish.find(params[:id])
 	end
 
@@ -14,7 +15,7 @@ class DishesController < ApplicationController
 		# byebug
 		@dish = @experience.dishes.build(dish_params)
 		if @dish.save
-			redirect_to root_url
+			redirect_to  experience_dish_path(@experience, @dish)
 		end
 	end
 
