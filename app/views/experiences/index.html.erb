@@ -1,7 +1,7 @@
 <h1>All Experiences</h1>
 <% if @experiences %>
   <% @experiences.each do |experience| %>
-    <%= experience.unique_place_id %>
+    <%= link_to "#{experience.venue.name}", venue_path(experience.venue) %>
     <% if experience.dishes %>
       <ul>
         <%= render partial: experience.dishes %>
