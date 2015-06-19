@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
+  resources :venues, only: [:show, :new, :create]
   resources :experiences do
-    resources :restaurants, only: [:show, :new, :create]
     resources :dishes, except: [:index, :show]
   end
   
