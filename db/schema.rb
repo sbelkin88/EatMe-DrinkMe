@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20150618235900) do
 
   create_table "dishes", force: :cascade do |t|
     t.string   "title",                    null: false
-    t.string   "pic_url"
     t.string   "review",                   null: false
     t.integer  "experience_id",            null: false
     t.datetime "created_at",               null: false
