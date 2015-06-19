@@ -49,6 +49,11 @@ Rails.application.configure do
     :url => ":s3_domain_url",
     :path => "/:class/:attachment/:id_partition/:style/:filename"
 
+
   }
 
+
+
+
+  rails generate devise:install
 end
