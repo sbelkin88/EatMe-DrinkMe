@@ -48,12 +48,9 @@ Rails.application.configure do
     },
     :url => ":s3_domain_url",
     :path => "/:class/:attachment/:id_partition/:style/:filename"
-
-
   }
 
 
-
-
-  rails generate devise:install
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end
