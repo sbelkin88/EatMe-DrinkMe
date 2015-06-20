@@ -31,7 +31,8 @@ class ExperiencesController < ApplicationController
 
   def create
     place_id = params[:place_id]
-    uri = URI.parse("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=AIzaSyAzW3XiCvlvfiD2dvHf2Vh5TjoiUJ9ujw4")
+    key = ENV["GOOGLE_KEY"]
+    uri = URI.parse("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{key}")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     request = Net::HTTP::Get.new(uri.request_uri)
@@ -45,7 +46,6 @@ class ExperiencesController < ApplicationController
     phone = place["result"]["formatted_phone_number"]
     website = place["result"]["website"]
     @venue = Venue.new(name: place["result"]["name"], address: "#{street_num} #{street_address}", city: city , state: state, zip: zip, phone: phone, website: website)
-    # binding.pry
     @experience = User.last.experiences.build(venue: @venue)
     @dish = @experience.dishes.build(experience_params[:dish])
     if @venue.save && @experience.save && @dish.save
