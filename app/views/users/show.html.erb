@@ -2,12 +2,13 @@
 	
 	<!-- TODO refactor user info to partial -->
 	<div class="user-info">
-		<p>@user.username</p>
-		<p>@user.email</p>
+		<p><%= @user.username %></p>
+		<p><%= @user.email %> </p>
 	</div>
 
 	<div class="user-follow-functionality">
-		<%= render 'follow_form' if logged_in? %>
+		<%= render 'follow_form' if user_signed_in? %>
+		<p>trennen</p>
 	  <%= render 'shared/stats' %>
 	</div>
 	

@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   end
   post 'search', :to => 'experiences#search'
   root 'welcome#index'
-
+  resources :relationships,       only: [:create, :destroy]
 end
