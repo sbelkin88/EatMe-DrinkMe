@@ -23,6 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg_search'
 
 
+# User authentification
+gem 'devise'
+
 
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '< 2.0'
