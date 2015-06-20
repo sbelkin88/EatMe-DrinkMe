@@ -1,0 +1,15 @@
+<div class="user-profile">
+	
+	<!-- TODO refactor user info to partial -->
+	<div class="user-info">
+		<p><%= @user.username %></p>
+		<p><%= @user.email %> </p>
+	</div>
+
+	<div class="user-follow-functionality">
+		<%= render 'follow_form' if user_signed_in? %>
+		<p>trennen</p>
+	  <%= render 'shared/stats' %>
+	</div>
+	
+</div>
