@@ -55,4 +55,13 @@ Rails.application.configure do
   # FIX add these too ? 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => '[redacted]',
+    :user_name            => '[redacted]',
+    :password             => '[redacted]',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end
