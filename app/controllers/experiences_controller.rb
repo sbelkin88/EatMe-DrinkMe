@@ -1,4 +1,5 @@
 require 'pry'
+require 'net/http'
 class ExperiencesController < ApplicationController
 	def show
 		@experience = Experience.find_by(id: params[:id])
@@ -29,7 +30,22 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @venue = Venue.new(name: params[:venue], address: "Broadway", city: "New York", state: "NY", zip: "10024", phone: "212-222-2222", website: "www.nyc.com")
+    place_id = params[:place_id]
+    uri = URI.parse("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=AIzaSyAzW3XiCvlvfiD2dvHf2Vh5TjoiUJ9ujw4")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    place = JSON.parse(response.body)
+    street_num = place["result"]["address_components"][0]["long_name"]
+    street_address = place["result"]["address_components"][1]["long_name"]
+    city = place["result"]["address_components"][2]["long_name"]
+    state = place["result"]["address_components"][3]["short_name"]
+    zip = place["result"]["address_components"][5]["long_name"]
+    phone = place["result"]["formatted_phone_number"]
+    website = place["result"]["website"]
+    @venue = Venue.new(name: place["result"]["name"], address: "#{street_num} #{street_address}", city: city , state: state, zip: zip, phone: phone, website: website)
+    # binding.pry
     @experience = User.last.experiences.build(venue: @venue)
     @dish = @experience.dishes.build(experience_params[:dish])
     if @venue.save && @experience.save && @dish.save
