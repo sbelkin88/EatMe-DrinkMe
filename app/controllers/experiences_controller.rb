@@ -3,9 +3,7 @@ require 'net/http'
 class ExperiencesController < ApplicationController
 	def show
 		@experience = Experience.find_by(id: params[:id])
-    render :layout => !request.xhr?
     respond_to do |format|
-      byebug
       format.html{render :layout => !request.xhr?}
     end
 	end
@@ -69,10 +67,6 @@ class ExperiencesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @experience = Experience.find_by(id: params[:id])
   end
 
   def search
