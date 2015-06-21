@@ -18,6 +18,9 @@ class UsersController < ApplicationController
 		@following = current_user.following.map{|user|user.id}
 		@experiences = Experience.where(:user_id => @following)
 		render 'experiences/index'
+		respond_to do |format|
+      format.html{render :layout => !request.xhr?}
+    end
 	end
 
 end
