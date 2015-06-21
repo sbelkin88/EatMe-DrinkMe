@@ -1,13 +1,11 @@
 <%= form_for @experience do |f| %>
 
-  <div><input type="hidden" name="place_id" id="place_id"></div>
-
   <p>
     <%= f.label :Experience_Name %>
     <%= f.text_field :name %>
   </p>
 
-  
+
   <h4>Dish:</h4>
   <%= f.fields_for @experience.dishes.build do |dish_form| %>
     <% @experience.dishes.each do |dish| %>
@@ -27,9 +25,6 @@
     <div>
       Venue: <input id="pac-input" class="controls" type="text"/>
     </div>
-
-
-
     <p>
       <%= dish_form.label :Dish %>
       <%= dish_form.text_field :title %>

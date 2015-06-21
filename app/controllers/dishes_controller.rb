@@ -37,9 +37,15 @@ class DishesController < ApplicationController
 		end
 	end
 
+  def destroy
+    @dish = Dish.find_by(id: params[:id])
+    @dish.destroy
+    redirect_to experiences_path
+  end
+
 	private
 
-		def dish_params
-			params.require(:dish).permit(:dishpicture, :title, :review)
-		end
+	def dish_params
+		params.require(:dish).permit(:dishpicture, :title, :review)
+	end
 end

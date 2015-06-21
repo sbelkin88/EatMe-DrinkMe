@@ -1,0 +1,31 @@
+<h1>Edit Experience</h1>
+<%= form_for @experience do |f| %>
+  <p>
+    <%= f.label :Experience_Name %>
+    <%= f.text_field :name %>
+  </p>
+  <% @experience.dishes.each do |dish| %>
+    <%= f.fields_for dish, index: dish.id do |ff| %>
+      <div>
+        Venue: <input id="pac-input" class="controls" type="text" value="<%= dish.venue.name %>"/>
+      </div>
+      <p>
+        <%= ff.label :Dish %>
+        <%= ff.text_field :title %>
+      </p>
+      <p>
+        <%= ff.label :Picture %>
+        <% if dish.dishpicture.file? %>
+          <%= image_tag dish.dishpicture.url(:thumb) %>
+        <% else %>
+          <%= image_tag("No_image_available.svg", size: '150x150') %>
+        <% end %>
+        <%= ff.file_field :dishpicture %>
+      </p>
+      <p>
+        <%= ff.label :Review %>
+        <%= ff.text_area :review %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
