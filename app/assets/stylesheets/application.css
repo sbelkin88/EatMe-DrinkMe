@@ -13,3 +13,141 @@
  *= require_tree .
  *= require_self
  */
+
+
+/*------------------------------------------- GENERAL
+*/
+
+
+ h1 {font-size: 1.8em;}
+ h2 {font-size: 1.6em;}
+ h3 {font-size: 1.4em;}
+ h4 {font-size: 1.3em;}
+ h5 {font-size: 1.2em;}
+ h6 {font-size: 1.1em;}
+
+
+/*------------------------------------------- BASIC FLEX STRUCTURE
+*/
+
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+
+}
+
+header, #main, footer {
+    display: flex;
+
+    width: 100%;
+
+}
+
+#main {
+	flex: 1;
+}
+
+
+
+
+#top-inner-header,
+#navigation-inner-header, 
+#inner-main,
+#inner-footer {
+    display: flex;
+
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+
+
+/*------------------------------------------- HEADER*/
+
+header {
+	flex-flow: column;
+
+}
+
+#top-header {
+	/*border: 2px solid black;*/
+	
+	height: 65px;
+	background-color: lightblue;
+}
+
+#navigation-header {
+	/*border: 2px solid blue;*/
+	
+	/*background-color: grey;*/
+	background-color: lightblue;
+}
+
+#top-inner-header {
+	flex-flow: row;
+	justify-content: space-between;
+
+}
+
+#navigation-inner-header {
+	flex-flow: row;
+	justify-content: space-between;
+
+	height: 40px;
+}
+
+.nav-add-dish,
+.nav-my-feed,
+.nav-explore,
+.nav-my-experiences {
+	flex: 1;
+
+	/*border: 2px solid black;*/
+}
+
+/*------------------------------------------- MAIN */
+
+
+
+
+/*------------------------------------------- FOOTER*/
+
+footer {
+	height: 50px;
+
+	background-color: lightblue;
+
+
+}
+
+
+
+/*------------------------------------------- SEARCH BAR*/ 
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+/*------------------------------------------- */
+/*------------------------------------------- */
+/*------------------------------------------- */
+
+
