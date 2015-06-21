@@ -3,6 +3,11 @@ require 'net/http'
 class ExperiencesController < ApplicationController
 	def show
 		@experience = Experience.find_by(id: params[:id])
+    render :layout => false
+    respond_to do |format|
+      byebug
+      format.html{render :layout => !request.xhr?}
+    end
 	end
 
   def index

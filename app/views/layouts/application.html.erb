@@ -58,7 +58,7 @@
           <div class="nav-explore">
             <%= link_to(image_tag("icons/1434924592_compass.svg", size: '28x28', alt: 'Explore'), experiences_path)  %>
           </div>
-          <div class="nav-my-experiences">
+          <div class="nav-my-experiences" id="<%= current_user.id %>">
             <%= link_to(image_tag("icons/1434924558_user_people_man_human_head_person.svg", size: '28x28', alt: 'My Experiences'), user_path(current_user)) %>
           </div>
         </div>
