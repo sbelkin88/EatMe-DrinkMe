@@ -32,7 +32,7 @@
 
 body {
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     justify-content: space-between;
 
     min-height: 100vh;
@@ -70,7 +70,7 @@ header, #main, footer {
 /*------------------------------------------- HEADER*/
 
 header {
-	flex-flow: column;
+	flex-direction: column;
 
 }
 
@@ -86,28 +86,34 @@ header {
 	
 	/*background-color: grey;*/
 	background-color: lightblue;
+
+
 }
 
 #top-inner-header {
-	flex-flow: row;
+	flex-direction: row;
 	justify-content: space-between;
 
 }
 
 #navigation-inner-header {
-	flex-flow: row;
+	flex-direction: row;
 	justify-content: space-between;
 
 	height: 40px;
 }
 
+
 .nav-add-dish,
 .nav-my-feed,
 .nav-explore,
 .nav-my-experiences {
+    display:flex;
 	flex: 1;
-
-	/*border: 2px solid black;*/
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /*------------------------------------------- MAIN */
@@ -120,7 +126,8 @@ header {
 
 #render-experiences {
     display: flex;
-    flex-flow: row || wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 /*------------------------------------------- FOOTER*/
