@@ -2,7 +2,11 @@
   <%= dish.title %>
   <ul>
     <li>Venue: <%= dish.venue.name %></li>
-    <li><%= image_tag dish.dishpicture.url(:thumb) %></li>
+    <% if dish.dishpicture.file? %>
+      <li><%= image_tag dish.dishpicture.url(:thumb) %></li>
+    <% else %>
+      <li><%= image_tag("No_image_available.svg", size: '150x150') %></li>
+    <% end %>
     <li>Review: <%= dish.review %></li>
   </ul>
 </li>
