@@ -1,9 +1,11 @@
-<%= link_to "#{experience.name}", experience_path(experience) %>
-<% if experience.dishes %>
-  <ul>
-    <%= render partial: experience.dishes %>
-    <% if experience.user == current_user %>
-      <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="single-experience">
+  <%= link_to "#{experience.name}", experience_path(experience) %>
+  <% if experience.dishes %>
+    <ul>
+      <%= render partial: experience.dishes %>
+      <% if experience.user == current_user %>
+        <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

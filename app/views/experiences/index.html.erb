@@ -3,8 +3,8 @@
   <%= text_field_tag :search %>
   <%= submit_tag "Search" %>
 <% end %>
-<% if @experiences %>
-  <% @experiences.each do |experience| %>
-    <%= render experience %>
+<div id="render-experiences">
+  <% if @experiences %>
+    <%= render @experiences %>
   <% end %>
-<% end %>
+</div>
