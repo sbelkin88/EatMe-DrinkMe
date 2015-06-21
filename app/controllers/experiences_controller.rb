@@ -73,6 +73,16 @@ class ExperiencesController < ApplicationController
     redirect_to :action => "index", :search => params[:search]
   end
 
+  def edit
+    @experience = Experience.find_by(id: params[:id])
+  end
+
+  def destroy
+    @experience = Experience.find_by(id: params[:id])
+    @experience.destroy
+    redirect_to experiences_path
+  end
+
   private
 
   def experience_params
