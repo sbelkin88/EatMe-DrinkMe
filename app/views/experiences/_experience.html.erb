@@ -1,5 +1,6 @@
 <div class="single-experience">
   <%= link_to "#{experience.name}", experience_path(experience) %>
+  <%= link_to "#{experience.user.username}", user_path(experience.user) %>
   <% if experience.dishes %>
     <ul>
       <%= render partial: experience.dishes %>

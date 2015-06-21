@@ -1,27 +1,23 @@
 class UsersController < ApplicationController
 
-	def show 
+	def show
 		@user = User.find_by(id: params[:id])
 	end
 
-
 	def following
 	  @users = current_user.following
-	  render 'show_follow'
+	  render 'show_following'
 	end
 
 	def followers
 	  @users = current_user.followers
-	  render 'show_follow'
+	  render 'show_followers'
 	end
 
-
 	def myfeed
-		@experiences = Experience.joins(user: :following)
+		@following = current_user.following.map{|user|user.id}
+		@experiences = Experience.where(:user_id => @following)
 		render 'experiences/index'
-		# @followings = current_user.following.includes(:experiences)
-		# @experiences = User.joins(following: )
-		# Category.joins(articles: [{ comments: :guest }, :tags])
 	end
 
 end
