@@ -3,22 +3,8 @@
   <%= text_field_tag :search %>
   <%= submit_tag "Search" %>
 <% end %>
-<div>
-  <%= link_to 'New Dish', new_experience_path %>
-</div>
 <% if @experiences %>
-  <div>
-    <%= link_to 'Explore', experiences_path %>
-    <%= link_to 'My Experiences', experiences_path(user: current_user) %>
-  </div>
-
   <% @experiences.each do |experience| %>
-    <%= link_to "#{experience.name}", experience_path(experience) %>
-    <% if experience.dishes %>
-      <ul>
-        <%= render partial: experience.dishes %>
-        <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
-      </ul>
-    <% end %>
+    <%= render experience %>
   <% end %>
 <% end %>
