@@ -11,8 +11,9 @@
 
 	  <%= render 'shared/stats' %>
 	</div>
-	<% if @user.experiences %>
-		<%= render @experiences %>
-	<% end %>
-
+	<div id="render-experiences">
+		<% if @user.experiences %>
+			<%= render @user.experiences %>
+		<% end %>
+	</div>
 </div>
