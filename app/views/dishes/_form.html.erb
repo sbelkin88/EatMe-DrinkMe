@@ -1,0 +1,35 @@
+<%= form_for([@experience, @dish]) do |f| %>
+
+  <div><input type="hidden" name="place_id" id="place_id"></div>
+  <% if @dish.errors.any? %>
+    <div id = 'error_explanation'>
+      <h2>
+        <%= pluralize(@dish.errors.count,'error') %> Prohibited this Dish from saving:
+      </h2>
+      <ul>
+        <% @dish.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+      Venue: <input id="pac-input" class="controls" type="text"/>
+  </div>
+
+  <p>
+    <%= f.label :Dish %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :Picture %>
+    <%= f.file_field :dishpicture %>
+  </p>
+  <p>
+    <%= f.label :Review %>
+    <%= f.text_area :review %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

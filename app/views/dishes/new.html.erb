@@ -1,15 +1,6 @@
-<%= form_for([@experience, @dish]) do |f| %>
-  	
-  	<%= f.file_field :dishpicture %>
+<h1>Add another dish</h1>
 
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+<%= render 'form' %>
+<%= link_to 'Back', experiences_path %>
 
-    <%= f.label :review %><br>
-    <%= f.text_field :review %>
-
-     <%= f.submit %>
-<% end %>
-
-<!-- , :html => { :multipart => true }  -->
 

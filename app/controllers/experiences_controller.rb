@@ -46,10 +46,11 @@ class ExperiencesController < ApplicationController
     phone = place["result"]["formatted_phone_number"]
     website = place["result"]["website"]
     @venue = Venue.new(name: place["result"]["name"], address: "#{street_num} #{street_address}", city: city , state: state, zip: zip, phone: phone, website: website)
-    @experience = User.last.experiences.build(venue: @venue)
+    @experience = current_user.experiences.build(experience_params[:name])
     @dish = @experience.dishes.build(experience_params[:dish])
+    @dish.venue = @venue
     if @venue.save && @experience.save && @dish.save
-      redirect_to experiences_path
+      redirect_to experience_path(@experience)
     else
       render :new
     end
@@ -66,6 +67,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(dish: [:id, :title, :dishpicture, :review])
+    params.require(:experience).permit(:name, dish: [:id, :title, :dishpicture, :review])
   end
 end

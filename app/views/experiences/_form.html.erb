@@ -2,7 +2,11 @@
 
   <div><input type="hidden" name="place_id" id="place_id"></div>
 
-  <h4>Dishes:</h4>
+  <p>
+    <%= f.label :Experience_Name %>
+    <%= f.text_field :name %>
+  </p>
+  <h4>Dish:</h4>
   <%= f.fields_for @experience.dishes.build do |dish_form| %>
     <% @experience.dishes.each do |dish| %>
       <% if dish.errors.any? %>
@@ -18,6 +22,9 @@
         </div>
       <% end %>
     <% end %>
+    <div>
+      Venue: <input id="pac-input" class="controls" type="text"/>
+    </div>
     <p>
       <%= dish_form.label :Dish %>
       <%= dish_form.text_field :title %>
@@ -29,10 +36,6 @@
     <p>
       <%= dish_form.label :Review %>
       <%= dish_form.text_area :review %>
-    </p>
-
-    <p>
-      <input type="text" name="dish_location" placeholder="location"/>
     </p>
   <% end %>
   <%= f.submit %>

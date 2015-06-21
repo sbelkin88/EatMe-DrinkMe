@@ -1,7 +1,9 @@
 <li>
   <%= dish.title %>
   <ul>
+    <li>Venue: <%= dish.venue.name %></li>
     <li><%= image_tag dish.dishpicture.url(:thumb) %></li>
-    <li><%= dish.review %></li>
+    <li>Review: <%= dish.review %></li>
   </ul>
 </li>
+<%= link_to 'Add another dish', new_experience_dish_path(dish.experience) %>
