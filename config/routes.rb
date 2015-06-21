@@ -20,3 +20,5 @@ Rails.application.routes.draw do
 
   get 'my-feed' => 'users#myfeed'
 end
+
+
