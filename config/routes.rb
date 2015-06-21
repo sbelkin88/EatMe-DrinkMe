@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   post 'search', :to => 'experiences#search'
   root 'welcome#index'
   resources :relationships,       only: [:create, :destroy]
+
+  get 'my-feed' => 'users#myfeed'
 end
