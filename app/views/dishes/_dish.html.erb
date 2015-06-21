@@ -3,9 +3,29 @@
   <ul>
     <li>Venue: <%= dish.venue.name %></li>
     <% if dish.dishpicture.file? %>
-      <li><%= image_tag dish.dishpicture.url(:thumb) %></li>
+      <li>
+        <div class="reveal"> 
+          <%= image_tag dish.dishpicture.url(:thumb) %>
+          <div class="hidden">
+            <div class="caption">
+              <div><%= dish.title %></div>    
+                <div class="bottom"><%= dish.review %></div>
+            </div><!-- end of .caption -->
+          </div><!-- end of .hidden -->
+        </div>
+      </li>
     <% else %>
-      <li><%= image_tag("No_image_available.svg", size: '150x150') %></li>
+      <li>
+        <div class="reveal">
+          <%= image_tag("No_image_available.svg", size: '150x150') %>
+          <div class="hidden">
+            <div class="caption">
+              <div><%= dish.title %></div>    
+                <div class="bottom"><%= dish.review %></div>
+            </div><!-- end of .caption -->
+          </div><!-- end of .hidden -->
+        </div>
+      </li>
     <% end %>
     <li>Review: <%= dish.review %></li>
   </ul>
