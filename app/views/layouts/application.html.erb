@@ -41,18 +41,61 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
 
+  <header>
+    <div id="top-header"> 
+      <div id='top-inner-header'>   
 
-  <%= yield %>
+        <div id="header-logo">
+          
+          <h1>EatMeDrinkME</h1>
+
+        </div>
+
+        <div class="inner-header-user">
+          <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <% end %>
+          
+        </div>
+
+      </div>   
+    </div>      
+        
+      <!-- TODO change to link to tags -->
+    <div id="navigation-header">
+      <div id="navigation-inner-header">
+        <div class="nav-add-dish">
+          <%= link_to 'add dish', new_experience_path  %>
+        </div>
+        <div class="nav-my-feed">
+          <%= link_to 'my feed', experiences_path  %>
+        </div>
+        <div class="nav-explore">
+          <a href="#">EXPLORE</a>
+        </div>
+        <div class="nav-my-experiences">
+          <a href="#">MY EXPERIENCES</a>
+        </div>      
+      </div>
+    </div>
+  </header>
+
+  <div id="main">
+    <div id="inner-main">
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <div id="inner-footer">
+      
+    </div>
+  </footer>
 
 </body>
 </html>
