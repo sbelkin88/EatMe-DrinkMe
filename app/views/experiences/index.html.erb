@@ -17,6 +17,7 @@
     <% if experience.dishes %>
       <ul>
         <%= render partial: experience.dishes %>
+        <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
       </ul>
     <% end %>
   <% end %>
