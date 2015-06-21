@@ -1,7 +1,1 @@
-<div class="show-dish">
-	
-	<%= image_tag @dish.dishpicture.url(:thumb) %>
-	
-	<%= @dish.title %>
-
-</div>
+<%= render @dish, locals:{dish: @dish} %>
