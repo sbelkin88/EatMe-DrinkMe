@@ -7,7 +7,7 @@ var componentForm = {
   postal_code: 'short_name'
 };
 
-var placeID = ""
+// var placeID = ""
 
 function initialize() {
 
@@ -18,25 +18,24 @@ function initialize() {
 
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     var place = autocomplete.getPlace();
-    console.log(place.place_id);
     document.getElementById("place_id").value = place.place_id;
-    placeID = place.place_id
+    // placeID = place.place_id
   });
 };
 
-function getPlaceInfo(){
-  $.ajax({
-    url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeID + "&key=AIzaSyD0aJPt5PYuQ1hyDTfhkw84CliWkiNA4nI" + "&jsoncallback=getPlaceInfoCallback",
-    dataType: 'json',
-    success: function(response){
-      console.log(response)
-    }
-  });
-};
+// function getPlaceInfo(){
+//   $.ajax({
+//     url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeID + "&key=AIzaSyD0aJPt5PYuQ1hyDTfhkw84CliWkiNA4nI" + "&jsoncallback=getPlaceInfoCallback",
+//     dataType: 'json',
+//     success: function(response){
+//       console.log(response)
+//     }
+//   });
+// };
 
-function getPlaceInfoCallback(response){
-  cookie = JSON.parse(response)
-  console.log(cookie)
-}
+// function getPlaceInfoCallback(response){
+//   cookie = JSON.parse(response)
+//   console.log(cookie)
+// }
 
 google.maps.event.addDomListener(window, 'load', initialize);
