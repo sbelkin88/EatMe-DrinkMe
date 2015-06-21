@@ -114,7 +114,7 @@ header {
 
 #inner-main {
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
