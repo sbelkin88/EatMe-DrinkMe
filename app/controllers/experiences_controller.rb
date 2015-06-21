@@ -15,9 +15,13 @@ class ExperiencesController < ApplicationController
           @experiences << object.searchable.experience unless @experiences.include?(object.searchable.experience)
         elsif object.searchable_type == "User"
           @experiences += object.searchable.experiences
+        elsif object.searchable_type == "Experience"
+          @experiences << object.searchable
         end
       end
-      @experiences += Experience.venue_search(params[:search])
+      Dish.venue_search(params[:search]).each do |object|
+        @experiences << object.experience unless @experiences.include?(object.experience)
+      end
     else
       @experiences = Experience.all.includes(:dishes)
     end
@@ -46,10 +50,11 @@ class ExperiencesController < ApplicationController
     phone = place["result"]["formatted_phone_number"]
     website = place["result"]["website"]
     @venue = Venue.new(name: place["result"]["name"], address: "#{street_num} #{street_address}", city: city , state: state, zip: zip, phone: phone, website: website)
-    @experience = User.last.experiences.build(venue: @venue)
+    @experience = current_user.experiences.build(name: experience_params[:name])
     @dish = @experience.dishes.build(experience_params[:dish])
+    @dish.venue = @venue
     if @venue.save && @experience.save && @dish.save
-      redirect_to experiences_path
+      redirect_to experience_path(@experience)
     else
       render :new
     end
@@ -66,6 +71,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(dish: [:id, :title, :dishpicture, :review])
+    params.require(:experience).permit(:name, dish: [:id, :title, :dishpicture, :review])
   end
 end

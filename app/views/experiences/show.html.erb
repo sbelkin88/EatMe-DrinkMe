@@ -1,7 +1,9 @@
 <h1>Experience:</h1>
-<%= link_to "#{@experience.venue.name}", experience_path(@experience) %>
-    <% if @experience.dishes %>
-      <ul>
-        <%= render partial: @experience.dishes %>
-      </ul>
-    <% end %>
+<%= link_to "#{@experience.name}", experience_path(@experience) %>
+<% if @experience.dishes %>
+  <ul>
+    <%= render partial: @experience.dishes %>
+    <li><%= link_to 'Add another dish', new_experience_dish_path(@experience) %></li>
+  </ul>
+<% end %>
+<%= link_to 'All experiences', experiences_path %>

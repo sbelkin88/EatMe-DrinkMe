@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150620165153) do
     t.string   "title",                    null: false
     t.string   "review",                   null: false
     t.integer  "experience_id",            null: false
+    t.integer  "venue_id",                 null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "dishpicture_file_name"
@@ -29,16 +30,16 @@ ActiveRecord::Schema.define(version: 20150620165153) do
   end
 
   add_index "dishes", ["experience_id"], name: "index_dishes_on_experience_id", using: :btree
+  add_index "dishes", ["venue_id"], name: "index_dishes_on_venue_id", using: :btree
 
   create_table "experiences", force: :cascade do |t|
-    t.integer  "venue_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: "Untitled Experience"
+    t.integer  "user_id",                                    null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
-  add_index "experiences", ["venue_id"], name: "index_experiences_on_venue_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
@@ -91,12 +92,12 @@ ActiveRecord::Schema.define(version: 20150620165153) do
     t.string   "state",      null: false
     t.string   "zip",        null: false
     t.string   "phone",      null: false
-    t.string   "website",    null: false
+    t.string   "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "dishes", "experiences"
+  add_foreign_key "dishes", "venues"
   add_foreign_key "experiences", "users"
-  add_foreign_key "experiences", "venues"
 end

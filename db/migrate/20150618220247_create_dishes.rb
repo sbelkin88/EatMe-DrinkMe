@@ -4,6 +4,7 @@ class CreateDishes < ActiveRecord::Migration
       t.string :title, null: false
       t.string :review, null: false
       t.references :experience, null: false, index: true, foreign_key: true
+      t.references :venue, null:false, index:true, foreign_key: true
 
       t.timestamps null: false
     end
