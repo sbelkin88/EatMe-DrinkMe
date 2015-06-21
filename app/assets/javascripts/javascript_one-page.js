@@ -3,8 +3,9 @@ $(document).ready(function(){
   $(".nav-explore").on("click", showAllExperiences);
   // $(".nav-my-feed").on("click", showMyFeed);
   $(".nav-my-experiences").on("click", showMyExperiences);
-  $("#inner-main").on('click', '.single-experience-link', showExperience)
-  $("#inner-main").on('click', '.single-user', showUserPage)
+  $("#inner-main").on('click', '.single-experience-link', showExperience);
+  $("#inner-main").on('click', '.single-user', showUserPage);
+  // $("#inner-main").on('submit', '.submit', showSearchResults);
 });
 
 var getNewDishForm = function(event){
@@ -34,7 +35,7 @@ var showAllExperiences = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
 
 var showMyExperiences = function(event){
   event.preventDefault();
@@ -67,7 +68,7 @@ var showExperience = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
 
 var showUserPage = function(event){
   event.preventDefault();
@@ -81,7 +82,23 @@ var showUserPage = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
+
+var showSearchResults = function(event){
+  debugger
+  event.preventDefault();
+  var $target = $(event.target);
+  var navBar = $target.closest("#navigation-inner-header");
+  $.ajax({
+    url: '/search'
+  }).done(function(response){
+    $("#inner-main").html(response);
+    navBar.children().removeClass("nav-highlight");
+    $(".nav-explore").toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
 
 
 var showMyFeed = function(event){
