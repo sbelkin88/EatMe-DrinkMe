@@ -10,5 +10,5 @@ class Dish < ActiveRecord::Base
   									styles: { :medium => "200x200>", :thumb => "100x100>" }
   validates_attachment_content_type :dishpicture, :content_type => /^image\/(png|gif|jpeg|jpg)/
 
-  validates :title, presence: true
+  validates :title,:review, presence: true
 end
