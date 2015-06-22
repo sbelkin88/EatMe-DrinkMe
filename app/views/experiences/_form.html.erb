@@ -1,5 +1,18 @@
 <%= form_for @experience do |f| %>
 
+  <% if @experience.errors.any? %>
+    <div id = 'error_explanation'>
+      <h2>
+        <%= pluralize(@experience.errors.count,'error') %> Prohibited this Experience from saving:
+      </h2>
+      <ul>
+        <% @experience.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= f.label :Experience_Name %>
     <%= f.text_field :name %>

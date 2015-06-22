@@ -17,6 +17,7 @@
   </ul>
 </li>
   <% if dish.experience.user == current_user %>
+    <li><%= link_to 'Edit Dish', edit_experience_dish_path(dish.experience, dish) %></li>
     <li><%= link_to 'Delete Dish', experience_dish_path(dish.experience, dish), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-dish" %></li>
   <% end %>
 </div>
