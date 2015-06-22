@@ -6,6 +6,8 @@ $(document).ready(function(){
   $("#inner-main").on('click', '.single-experience-link', showExperience);
   $("#inner-main").on('click', '.single-user', showUserPage);
   $("#inner-main").on('submit', '.submit', showSearchResults);
+  $("#inner-main").on('click', '#following', showFollowingPage);
+  $("#inner-main").on('click', '#followers', showFollowersPage);
 });
 
 var getNewDishForm = function(event){
@@ -89,7 +91,9 @@ var showSearchResults = function(event){
   var $target = $(event.target);
   var navBar = $target.closest("#navigation-inner-header");
   $.ajax({
-    url: '/search'
+    url: '/search',
+    method: 'post',
+    data: $target.serialize()
   }).done(function(response){
     $("#inner-main").html(response);
     navBar.children().removeClass("nav-highlight");
@@ -110,6 +114,36 @@ var showMyFeed = function(event){
     $("#inner-main").html(response);
     navBar.children().removeClass("nav-highlight");
     $(".nav-my-feed").toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
+
+var showFollowingPage = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var user_id = $target.closest(".user-profile").attr("id")
+  $.ajax({
+    url: '/users/' + user_id + '/following'
+  }).done(function(response){
+    $("#inner-main").html(response);
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-my-experiences").first().toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
+
+var showFollowersPage = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var user_id = $target.closest(".user-profile").attr("id")
+  $.ajax({
+    url: '/users/' + user_id + '/followers'
+  }).done(function(response){
+    $("#inner-main").html(response);
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-my-experiences").first().toggleClass("nav-highlight");
   }).fail(function(error){
     console.log(error);
   })

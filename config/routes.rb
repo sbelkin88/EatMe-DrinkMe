@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :experiences do
     resources :dishes
   end
-  get 'search', :to => 'experiences#search'
+  post 'search', :to => 'experiences#search'
   root 'welcome#index'
   resources :relationships,       only: [:create, :destroy]
 

@@ -70,7 +70,6 @@ class ExperiencesController < ApplicationController
   end
 
   def search
-    binding.pry
     redirect_to :action => "index", :search => params[:search]
   end
 
