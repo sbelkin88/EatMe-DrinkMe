@@ -8,19 +8,21 @@ class UsersController < ApplicationController
 	end
 
 	def following
-	  @users = current_user.following
-	  render 'show_following'
+		@user = User.find_by(id: params[:id])
+	  @users = @user.following
+	  render 'show_following', layout: false if request.xhr?
 	end
 
 	def followers
-	  @users = current_user.followers
-	  render 'show_followers'
+		@user = User.find_by(id: params[:id])
+	  @users = @user.followers
+	  render 'show_followers', layout: false if request.xhr?
 	end
 
 def myfeed
 		@following = current_user.following.map{|user|user.id}
 		@experiences = Experience.where(:user_id => @following)
-		render 'experiences/index', layout: false
+		render 'experiences/index', layout: false if request.xhr?
 	end
 
 end
