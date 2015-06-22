@@ -1,5 +1,5 @@
 <h1>All Experiences</h1>
-<%= form_tag search_path do %>
+<%= form_tag search_path, class: "submit" do %>
   <%= text_field_tag :search %>
   <%= submit_tag "Search" %>
 <% end %>

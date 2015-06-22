@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    get :feed, on: :collection, to: 'users#myfeed'
   end
-  
+
   resources :venues, only: [:show, :new, :create]
   resources :experiences do
     resources :dishes
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :relationships,       only: [:create, :destroy]
 
-  get 'my-feed' => 'users#myfeed'
 end
 
 

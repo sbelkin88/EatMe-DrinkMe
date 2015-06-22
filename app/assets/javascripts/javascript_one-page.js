@@ -1,10 +1,13 @@
 $(document).ready(function(){
   // $(".nav-add-dish").on('click', getNewDishForm);
   $(".nav-explore").on("click", showAllExperiences);
-  // $(".nav-my-feed").on("click", showMyFeed);
+  $(".nav-my-feed").on("click", showMyFeed);
   $(".nav-my-experiences").on("click", showMyExperiences);
-  $("#inner-main").on('click', '.single-experience-link', showExperience)
-  $("#inner-main").on('click', '.single-user', showUserPage)
+  $("#inner-main").on('click', '.single-experience-link', showExperience);
+  $("#inner-main").on('click', '.single-user', showUserPage);
+  $("#inner-main").on('submit', '.submit', showSearchResults);
+  $("#inner-main").on('click', '#following', showFollowingPage);
+  $("#inner-main").on('click', '#followers', showFollowersPage);
 });
 
 var getNewDishForm = function(event){
@@ -14,7 +17,8 @@ var getNewDishForm = function(event){
     url: '/experiences/new'
   }).done(function(response){
     $("#inner-main").html(response);
-    $target.css("background-color", "navy");
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-add-dish").first().toggleClass("nav-highlight");
   }).fail(function(error){
     console.log(error);
   });
@@ -34,7 +38,7 @@ var showAllExperiences = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
 
 var showMyExperiences = function(event){
   event.preventDefault();
@@ -67,7 +71,7 @@ var showExperience = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
 
 var showUserPage = function(event){
   event.preventDefault();
@@ -81,20 +85,65 @@ var showUserPage = function(event){
   }).fail(function(error){
     console.log(error);
   })
-}
+};
 
+var showSearchResults = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var navBar = $target.closest("#navigation-inner-header");
+  $.ajax({
+    url: '/search',
+    method: 'post',
+    data: $target.serialize()
+  }).done(function(response){
+    $("#inner-main").html(response);
+    navBar.children().removeClass("nav-highlight");
+    $(".nav-explore").toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
 
 var showMyFeed = function(event){
   event.preventDefault();
   var $target = $(event.target);
+  var navBar = $target.closest("#navigation-inner-header");
   $.ajax({
-    url: '/users/myfeed'
+    url: '/users/feed'
   }).done(function(response){
-    $("#inner-main").html("<%= j render 'experiences/index'%>");
-    var nav_elements = $(".nav-highlight")
-    for(var i = 0; i < nav_elements.length; i++){
-      nav_elements[i].css("background-color", "transparent")};
-    $target.css("background-color", "navy");
+    $("#inner-main").html(response);
+    navBar.children().removeClass("nav-highlight");
+    $(".nav-my-feed").toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
+
+var showFollowingPage = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var user_id = $target.closest(".user-profile").attr("id")
+  $.ajax({
+    url: '/users/' + user_id + '/following'
+  }).done(function(response){
+    $("#inner-main").html(response);
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-my-experiences").first().toggleClass("nav-highlight");
+  }).fail(function(error){
+    console.log(error);
+  })
+};
+
+var showFollowersPage = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var user_id = $target.closest(".user-profile").attr("id")
+  $.ajax({
+    url: '/users/' + user_id + '/followers'
+  }).done(function(response){
+    $("#inner-main").html(response);
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-my-experiences").first().toggleClass("nav-highlight");
   }).fail(function(error){
     console.log(error);
   })
