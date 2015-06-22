@@ -7,7 +7,7 @@
   <% @experience.dishes.each do |dish| %>
     <%= f.fields_for dish, index: dish.id do |ff| %>
       <div>
-        Venue: <input id="pac-input" class="controls" type="text" value="<%= dish.venue.name %>"/>
+        Venue: <input class="controls" type="text" value="<%= dish.venue.name %>" is="autocomplete-input"/>
       </div>
       <p>
         <%= ff.label :Dish %>

@@ -23,9 +23,8 @@
       <% end %>
     <% end %>
     <div>
-      Venue: <input id="pac-input" class="controls" type="text"/>
+      Venue: <input class="controls" type="text" is="autocomplete-input"/>
     </div>
-    <div><input type="hidden" name="place_id" id="place_id"></div>
     <p>
       <%= dish_form.label :Dish %>
       <%= dish_form.text_field :title %>

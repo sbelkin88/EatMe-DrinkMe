@@ -13,6 +13,6 @@
   <% end %>
   <% if experience.user == current_user %>
     <%= link_to 'Edit Experience', edit_experience_path(experience) %>
-    <%= link_to 'Delete Experience', experience_path(experience), method: :delete, data: {confirm: 'Are you sure?'} %>
+    <%= link_to 'Delete Experience', experience_path(experience), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-experience" %>
   <% end %>
 </div>

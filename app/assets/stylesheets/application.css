@@ -132,6 +132,11 @@ header {
     background-color: #BD5532;
 }
 
+autocomplete-input{
+    display: block;
+    height: 25px;
+}
+
 /*------------------------------------------- MAIN */
 
 #inner-main {

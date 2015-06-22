@@ -24,6 +24,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish = Dish.find_by(id: params[:id])
+    binding.pry
     @dish.destroy
     redirect_to experiences_path
   end

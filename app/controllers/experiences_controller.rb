@@ -5,9 +5,6 @@ class ExperiencesController < ApplicationController
 
 	def show
 		@experience = Experience.find_by(id: params[:id])
-    respond_to do |format|
-      format.html{render :layout => !request.xhr?}
-    end
 	end
 
   def index
@@ -18,18 +15,12 @@ class ExperiencesController < ApplicationController
     else
       @experiences = Experience.all.includes(:dishes)
     end
-    respond_to do |format|
-      format.html{render :layout => !request.xhr?}
-    end
   end
 
   def new
     @experience = Experience.new
     @venue = Venue.new
     @experience.dishes.build
-    respond_to do |format|
-      format.html{render :layout => !request.xhr?}
-    end
   end
 
   def create
