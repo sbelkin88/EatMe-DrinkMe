@@ -32,6 +32,20 @@ class User < ActiveRecord::Base
 	  following.include?(other_user)
 	end
 	
+
+  def self.from_omniauth(auth)
+    User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.username = auth.info.name
+      user.email = auth.info.email
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
 end
 
 
