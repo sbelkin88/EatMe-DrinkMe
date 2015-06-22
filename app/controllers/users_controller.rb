@@ -17,10 +17,10 @@ class UsersController < ApplicationController
 	  render 'show_followers'
 	end
 
-	def myfeed
+def myfeed
 		@following = current_user.following.map{|user|user.id}
 		@experiences = Experience.where(:user_id => @following)
-		render 'experiences/index'
+		render 'experiences/index', layout: false
 	end
 
 end

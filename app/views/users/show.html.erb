@@ -4,7 +4,7 @@
 	<%= render @user %>
 
 	<div class="user-follow-functionality">
-		<%= render 'follow_form' if user_signed_in? %>
+		<%= render partial: 'follow_form', locals: {user: @user} %>
 
 	  <%= render 'shared/stats' %>
 	</div>
