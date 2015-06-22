@@ -17,7 +17,8 @@ var getNewDishForm = function(event){
     url: '/experiences/new'
   }).done(function(response){
     $("#inner-main").html(response);
-    $target.css("background-color", "navy");
+    $("#navigation-inner-header").children().removeClass("nav-highlight");
+    $(".nav-add-dish").first().toggleClass("nav-highlight");
   }).fail(function(error){
     console.log(error);
   });
@@ -102,7 +103,6 @@ var showSearchResults = function(event){
     console.log(error);
   })
 };
-
 
 var showMyFeed = function(event){
   event.preventDefault();
