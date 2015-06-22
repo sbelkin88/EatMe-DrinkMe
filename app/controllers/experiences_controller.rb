@@ -1,6 +1,8 @@
 require 'pry'
 require 'net/http'
 class ExperiencesController < ApplicationController
+  include ExperiencesHelper
+
 	def show
 		@experience = Experience.find_by(id: params[:id])
     respond_to do |format|
@@ -12,7 +14,7 @@ class ExperiencesController < ApplicationController
     if params[:user]
       @experiences = Experience.where(user_id: params[:user])
     elsif params[:search]
-      @experiences = get_search_results(params[:search])
+      @experiences = ExperiencesHelper.get_search_results(params[:search])
     else
       @experiences = Experience.all.includes(:dishes)
     end
@@ -60,22 +62,5 @@ class ExperiencesController < ApplicationController
 
   def experience_params
     params.require(:experience).permit(:name, dish: [:id, :title, :dishpicture, :review])
-  end
-
-  def get_search_results(keyword)
-    results = []
-    PgSearch.multisearch(keyword).each do |object|
-      if object.searchable_type == "Dish"
-        results << object.searchable.experience unless results.include?(object.searchable.experience)
-      elsif object.searchable_type == "User"
-        results += object.searchable.experiences
-      elsif object.searchable_type == "Experience"
-        results << object.searchable
-      end
-    end
-    Dish.venue_search(keyword).each do |object|
-      results << object.experience unless results.include?(object.experience)
-    end
-    return results
   end
 end
