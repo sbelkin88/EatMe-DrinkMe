@@ -78,16 +78,22 @@ header {
 	/*border: 2px solid black;*/
 
 	height: 65px;
-	background-color: lightblue;
+	background-color: #373B44;
 }
 
 #navigation-header {
 	/*border: 2px solid blue;*/
 
 	/*background-color: grey;*/
-	background-color: lightblue;
+	background-color: #E1B866;
 
 
+}
+
+#header-logo {
+    font-family: "Oleo Script";
+    font-size: 1.5em;
+    color: white;
 }
 
 #top-inner-header {
@@ -101,6 +107,12 @@ header {
 	justify-content: space-between;
 
 	height: 40px;
+}
+
+.inner-header-user{
+    color: white;
+    font-family: "Open Sans";
+    font-size: 0.8em;
 }
 
 
@@ -117,7 +129,7 @@ header {
 }
 
 .nav-highlight{
-    background-color: navy;
+    background-color: #BD5532;
 }
 
 /*------------------------------------------- MAIN */
@@ -126,6 +138,7 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-family: "Open Sans";
 }
 
 #render-experiences {
@@ -138,10 +151,15 @@ header {
 
 footer {
 	height: 50px;
+	background-color: #DEE1B6;
+    color: #73C8A9;
+    font-family: "Raleway";
+}
 
-	background-color: lightblue;
-
-
+#inner-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
