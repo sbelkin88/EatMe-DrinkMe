@@ -43,6 +43,15 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find_by(id: params[:id])
   end
 
+  def update
+    @experience = Experience.find_by(id: params[:id])
+    if @experience.update_attributes(name: experience_params[:name])
+      redirect_to experience_path(@experience)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @experience = Experience.find_by(id: params[:id])
     @experience.destroy

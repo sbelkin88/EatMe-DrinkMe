@@ -22,6 +22,26 @@ class DishesController < ApplicationController
 		end
 	end
 
+  def edit
+    @dish = Dish.find_by(id: params[:id])
+    @experience = @dish.experience
+  end
+
+  def update
+    @dish = Dish.find_by(id: params[:id])
+    @experience = @dish.experience
+    if params[:place_id] != ""
+      @venue = Venue.create_venue(params[:place_id])
+      @dish.venue = @venue
+    end
+    @dish.update_attributes(dish_params)
+    if @dish.save
+      redirect_to experiences_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @dish = Dish.find_by(id: params[:id])
     binding.pry

@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150622150658) do
     t.string   "zip",        null: false
     t.string   "phone",      null: false
     t.string   "website"
+    t.string   "place_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
