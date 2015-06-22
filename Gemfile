@@ -26,10 +26,9 @@ gem 'pg_search'
 # User authentification
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
-
+gem "omniauth-google-oauth2"
 
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '< 2.0'
