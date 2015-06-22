@@ -36,7 +36,7 @@ class ExperiencesController < ApplicationController
     @dish = @experience.dishes.build(experience_params[:dish])
     @dish.venue = @venue
     if @venue.save && @experience.save && @dish.save
-      redirect_to experience_path(@experience)
+      redirect_to experiences_path
     else
       render :new
     end
