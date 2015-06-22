@@ -1,5 +1,6 @@
 
 <div class="single-experience" id="<%= experience.id %>">
+  
   <%= link_to "#{experience.name}", experience_path(experience), class: "single-experience-link" %>
   <%= link_to "#{experience.user.username}", user_path(experience.user), class: "single-user", id: "#{experience.user_id}"%>
 
