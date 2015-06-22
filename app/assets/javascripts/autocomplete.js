@@ -7,8 +7,6 @@ var componentForm = {
   postal_code: 'short_name'
 };
 
-// var placeID = ""
-
 function initialize() {
 
   var input = /** @type {HTMLInputElement} */(
@@ -19,23 +17,27 @@ function initialize() {
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     var place = autocomplete.getPlace();
     document.getElementById("place_id").value = place.place_id;
-    // placeID = place.place_id
   });
 };
 
-// function getPlaceInfo(){
-//   $.ajax({
-//     url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeID + "&key=AIzaSyD0aJPt5PYuQ1hyDTfhkw84CliWkiNA4nI" + "&jsoncallback=getPlaceInfoCallback",
-//     dataType: 'json',
-//     success: function(response){
-//       console.log(response)
-//     }
-//   });
-// };
+var autocompleteInputProto = Object.create(HTMLInputElement.prototype)
 
-// function getPlaceInfoCallback(response){
-//   cookie = JSON.parse(response)
-//   console.log(cookie)
-// }
+autocompleteInputProto.attachedCallback = function(){
+  var autocomplete = new google.maps.places.Autocomplete(this);
+  var hidden = document.createElement("input");
+  console.log(hidden);
+  hidden.setAttribute("type", "hidden");
+  hidden.setAttribute("name", "place_id");
+  this.parentNode.insertBefore(hidden, this);
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    hidden.value = place.place_id;
+  });
+}
+
+document.registerElement('autocomplete-input', {
+  prototype: autocompleteInputProto,
+  extends: "input"
+});
 
 google.maps.event.addDomListener(window, 'load', initialize);
