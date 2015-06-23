@@ -2,15 +2,11 @@
 
 	<!-- TODO refactor user info to partial -->
 	<%= render @user %>
-
-	<div class="user-follow-functionality">
-		<%= render partial: 'follow_form', locals: {user: @user} %>
-
-	  <%= render 'shared/stats' %>
-	</div>
-	<div id="render-experiences">
-		<% if @user.experiences %>
-			<%= render @user.experiences %>
-		<% end %>
-	</div>
+	<%= render partial: 'follow_form', locals: {user: @user} %>
+  <%= render 'shared/stats' %>
+</div>
+<div id="render-experiences">
+	<% if @user.experiences %>
+		<%= render @user.experiences %>
+	<% end %>
 </div>
