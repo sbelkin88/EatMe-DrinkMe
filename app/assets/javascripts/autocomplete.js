@@ -7,10 +7,11 @@ var componentForm = {
   postal_code: 'short_name'
 };
 
+/*
 function initialize() {
 
-  var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
+  var input =
+      document.getElementById('pac-input');
 
   var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -19,6 +20,8 @@ function initialize() {
     document.getElementById("place_id").value = place.place_id;
   });
 };
+*/
+
 
 var autocompleteInputProto = Object.create(HTMLInputElement.prototype)
 
@@ -28,6 +31,7 @@ autocompleteInputProto.attachedCallback = function(){
   hidden.setAttribute("type", "hidden");
   hidden.setAttribute("name", "place_id");
   this.parentNode.insertBefore(hidden, this);
+  this.addEventListener('input', console.log.bind(console));
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     var place = autocomplete.getPlace();
     hidden.value = place.place_id;
@@ -39,4 +43,4 @@ document.registerElement('autocomplete-input', {
   extends: "input"
 });
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
