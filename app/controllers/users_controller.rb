@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	def show
-		@user = User.find_by(id: params[:id])
+		@user = User.includes(:experiences).find_by(id: params[:id])
 	end
 
 	def following
