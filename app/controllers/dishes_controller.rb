@@ -34,7 +34,7 @@ class DishesController < ApplicationController
       @venue = Venue.create_venue(params[:place_id])
       @dish.venue = @venue
     end
-    @dish.update_attributes(dish_params)
+    @dish.update(dish_params)
     if @dish.save
       redirect_to experiences_path
     else
