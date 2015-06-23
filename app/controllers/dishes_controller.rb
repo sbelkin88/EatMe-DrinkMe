@@ -8,6 +8,7 @@ class DishesController < ApplicationController
 	def new
 		@experience = Experience.find(params[:experience_id])
 		@dish = Dish.new
+    render layout: !request.xhr?
 	end
 
 	def create
