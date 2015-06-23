@@ -1,5 +1,5 @@
 5.times do |i|
-	venue = Venue.create(name: "Venue#{i}", address: "Post Rd#{i}", city: "Fairfield#{i}", state: "CT#{i}", zip: "06825-#{i}", phone: "203-222-#{i}", website: "#{i}www.martel.com")
+	venue = Venue.create(place_id: "#{i}", name: "Venue#{i}", address: "Post Rd#{i}", city: "Fairfield#{i}", state: "CT#{i}", zip: "06825-#{i}", phone: "203-222-#{i}", website: "#{i}www.martel.com")
 end
 
 

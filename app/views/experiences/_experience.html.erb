@@ -1,12 +1,18 @@
 
-<div class="single-experience" id="<%= experience.id %>">
+<div class="single-experience" id="<%= experience.id %>" >
   
   <%= link_to "#{experience.name}", experience_path(experience), class: "single-experience-link" %>
   <%= link_to "#{experience.user.username}", user_path(experience.user), class: "single-user", id: "#{experience.user_id}"%>
 
   <% if experience.dishes %>
     <ul>
-      <%= render partial: experience.dishes %>
+
+
+      <div id="<%= experience.id %>" class="owl-carousel">
+        <%= render partial: experience.dishes %>
+      </div>
+
+
       <% if experience.user == current_user %>
         <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
       <% end %>
