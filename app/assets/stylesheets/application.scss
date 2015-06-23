@@ -173,6 +173,16 @@ header {
     width: auto;
 }
 
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-info{
+    align-self: center;
+}
+
 
 /*------------------------------------------- FOOTER*/
 
