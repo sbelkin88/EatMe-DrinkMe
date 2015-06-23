@@ -8,38 +8,58 @@
   width: 100%;
   height: 100%;
 
-}
+  .appear-on-hover.dish-description {
+    color: white;
+    visibility: hidden;
+    position: absolute;
+    top: 3%; 
 
-.dish-pic-container {
+    padding: 5%;
+  }
 
-  width: 100%;
-  height: auto;
+  &:hover {
+    .dish-pic-container {
+      background-color: black;
 
-  /*border: 1px dashed blue;*/
-}
+      .dish-pic {
+        opacity: 0.7;
+      }
+    }
 
+    .appear-on-hover.dish-description {
+      visibility: visible;
+      z-index: 2;
+    }
+  }
 
+  .dish-pic-container {
+    width: 100%;
+    height: auto;
+    z-index: 1;
 
-
-.dish-pic {
-/*  border: 1px dashed red;*/
-  width: 100%;
-  height: 100%;
-  img {
-    content-fit: fill;
+    .dish-pic {
+    /*  border: 1px dashed red;*/
+      width: 100%;
+      height: 100%;
+      /*visibility: hidden;*/
+      img {
+        content-fit: contain;
+      }
+    }
   }
 }
 
 
 
-.appear-on-hover.dish-description {
-   display: none;
-
-}
 
 
 
 
+
+
+
+
+ 
 
 
 
