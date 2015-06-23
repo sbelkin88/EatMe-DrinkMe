@@ -25,7 +25,6 @@ var autocompleteInputProto = Object.create(HTMLInputElement.prototype)
 autocompleteInputProto.attachedCallback = function(){
   var autocomplete = new google.maps.places.Autocomplete(this);
   var hidden = document.createElement("input");
-  console.log(hidden);
   hidden.setAttribute("type", "hidden");
   hidden.setAttribute("name", "place_id");
   this.parentNode.insertBefore(hidden, this);
