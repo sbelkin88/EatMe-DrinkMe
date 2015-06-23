@@ -7,7 +7,7 @@ class Dish < ActiveRecord::Base
 
   has_attached_file :dishpicture,
   									:default_url => "/images/No_image_available",
-  									styles: { :medium => "200x200>", :thumb => "100x100>" }
+  									styles: { :large => "700x700>", :medium => "500x500>", :thumb => "300x300>" }
   validates_attachment_content_type :dishpicture, :content_type => /^image\/(png|gif|jpeg|jpg)/
 
   validates :title,:review, presence: true
