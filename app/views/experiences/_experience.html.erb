@@ -1,16 +1,20 @@
 
 <div class="single-experience" id="<%= experience.id %>" >
-
+  
+  <div class="experience-title">
+    
   <%= link_to "#{experience.user.username}", user_path(experience.user), 
               class: "single-user", id: "#{experience.user_id}"%>
               postet
   <%= link_to "#{experience.name}", experience_path(experience), 
               class: "single-experience-link" %>
 
-  <!-- TODO : is this eagerloaded ? -->
+    
+  </div>
+
   
   <% if experience.dishes %>
-    <div id="<%= experience.id %>" class="owl-carousel">
+    <div id="<%= experience.id %>" class="owl-carousel carousel-container" >
       <%= render partial: experience.dishes %>
     </div>
   <% end %>
