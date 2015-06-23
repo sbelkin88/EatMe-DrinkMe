@@ -1,5 +1,6 @@
 class DishesController < ApplicationController
-  # Make sure to indent with spaces only, not tabs please!
+  # Make sure to indent with spaces only, not tabs please! You'll also notice
+  # that tabs totally screw up how indentation looks on github!
 
 	def show
 		@experience = Experience.find(params[:experience_id])
