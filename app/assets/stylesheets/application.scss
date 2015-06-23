@@ -17,6 +17,13 @@
 
  */
 
+/*------------------------------------------- GENERAL
+*/
+
+$headcolor: #373B44;
+$subnav: #ffffff;
+$footer: #373B44;
+
 
 /*------------------------------------------- GENERAL
 */
@@ -37,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    background-image: url(subtle_white_mini_waves.png);
     min-height: 100vh;
 
 }
@@ -81,14 +88,14 @@ header {
 	/*border: 2px solid black;*/
 
 	height: 65px;
-	background-color: #373B44;
+	background-color: $headcolor;
 }
 
 #navigation-header {
 	/*border: 2px solid blue;*/
 
 	/*background-color: grey;*/
-	background-color: #E1B866;
+	background-color: $subnav;
 
 
 }
@@ -135,6 +142,10 @@ header {
     background-color: #BD5532;
 }
 
+.navbar-link{
+    color: white;
+}
+
 autocomplete-input{
     display: block;
     height: 25px;
@@ -146,7 +157,7 @@ autocomplete-input{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-family: "Open Sans";
+    font-family: "Didact Gothic";
 }
 
 #render-experiences {
@@ -159,8 +170,8 @@ autocomplete-input{
 
 footer {
 	height: 50px;
-	background-color: #DEE1B6;
-    color: #73C8A9;
+	background-color: $footer;
+    color: #ffffff;
     font-family: "Raleway";
 }
 
