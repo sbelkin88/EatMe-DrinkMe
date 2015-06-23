@@ -32,7 +32,7 @@ class ExperiencesController < ApplicationController
     if @venue.save && @experience.save && @dish.save
       redirect_to experiences_path
     else
-      render :new
+      render :_form
     end
   end
 
