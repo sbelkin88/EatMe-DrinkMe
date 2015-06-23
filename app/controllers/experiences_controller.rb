@@ -21,6 +21,7 @@ class ExperiencesController < ApplicationController
     @experience = Experience.new
     @venue = Venue.new
     @experience.dishes.build
+    render :_form
   end
 
   def create

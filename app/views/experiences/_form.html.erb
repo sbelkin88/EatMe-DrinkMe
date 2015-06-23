@@ -1,52 +1,45 @@
-<div id="myModal", class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <%= bootstrap_form_for @experience do |f| %>
-
-        <% if @experience.errors.any? %>
-          <div id = 'error_explanation'>
-            <h2>
-              <%= pluralize(@experience.errors.count,'error') %> Prohibited this Experience from saving:
-            </h2>
-            <ul>
-              <% @experience.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
+<% @experience ||= Experience.new %>
+<%= bootstrap_form_for @experience do |f| %>
+  <% if @experience.errors.any? %>
+    <div id = 'error_explanation'>
+      <h2>
+        <%= pluralize(@experience.errors.count,'error') %> Prohibited this Experience from saving:
+      </h2>
+      <ul>
+        <% @experience.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
-
-        <%= f.text_field :name, label: "Experience Name" %>
-
-        <%= f.fields_for @experience.dishes.build do |dish_form| %>
-          <% @experience.dishes.each do |dish| %>
-            <% if dish.errors.any? %>
-              <div id = 'error_explanation'>
-                <h2>
-                  <%= pluralize(dish.errors.count,'error') %> Prohibited this Dish from saving:
-                </h2>
-                <ul>
-                  <% dish.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-          <% end %>
-
-            <div class="form-group">
-              <label class="control-label required">Venue</label>
-              <input class="controls form-control" type="text" is="autocomplete-input"/>
-            </div>
-
-            <%= dish_form.text_field :title, label: "Dish" %>
-            <%= dish_form.file_field :dishpicture, label: "Picture" %>
-            <%= dish_form.text_area :review, label: "Review" %>
-
-        <% end %>
-        <%= f.submit %>
-      <% end %>
+      </ul>
     </div>
-  </div>
-</div>
+  <% end %>
+
+  <%= f.text_field :name, label: "Experience Name" %>
+
+  <%= f.fields_for @experience.dishes.build do |dish_form| %>
+    <% @experience.dishes.each do |dish| %>
+      <% if dish.errors.any? %>
+        <div id = 'error_explanation'>
+          <h2>
+            <%= pluralize(dish.errors.count,'error') %> Prohibited this Dish from saving:
+          </h2>
+          <ul>
+            <% dish.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+      <div class="form-group">
+        <label class="control-label required">Venue</label>
+        <input class="controls form-control" type="text" is="autocomplete-input"/>
+      </div>
+
+      <%= dish_form.text_field :title, label: "Dish" %>
+      <%= dish_form.file_field :dishpicture, label: "Picture" %>
+      <%= dish_form.text_area :review, label: "Review" %>
+
+  <% end %>
+  <%= f.submit %>
+<% end %>

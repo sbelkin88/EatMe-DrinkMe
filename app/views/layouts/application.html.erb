@@ -52,12 +52,29 @@
       </div>
     </div>
 
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 class="modal-title">Record a New Experience</h1>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'experiences/form' %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to 'Back', experiences_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- TODO change to link to tags -->
     <div id="navigation-header">
       <% if current_user %>
       <div id="navigation-inner-header">
         <div class="nav-add-dish ">
-          <%= link_to(image_tag("icons/1434924603_soup.svg", size: '28x28', alt: 'New Experience', data: {toggle: "modal", target: "#myModal"}, role: "button"), new_experience_path)  %>
+          <%= link_to(image_tag("icons/1434924603_soup.svg", size: '28x28', alt: 'New Experience'), "#", data: {toggle: "modal", target: "#myModal"})  %>
         </div>
         <div class="nav-my-feed">
           <%= link_to(image_tag("icons/1434924614_home_house_local.svg", size: '28x28', alt: 'My Feed'), feed_users_path)  %>
