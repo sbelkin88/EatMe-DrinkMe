@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg_search'
 
-
+gem 'owlcarousel-rails'
 # User authentification
 gem 'devise'
 gem 'omniauth'

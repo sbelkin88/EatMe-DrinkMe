@@ -1,18 +1,18 @@
 
-<div class="single-experience" id="<%= experience.id %>">
-  <%= link_to "#{experience.name}", experience_path(experience), class: "single-experience-link" %>
-  <%= link_to "#{experience.user.username}", user_path(experience.user), class: "single-user", id: "#{experience.user_id}"%>
+<div class="single-experience" id="<%= experience.id %>" >
 
+  <%= link_to "#{experience.user.username}", user_path(experience.user), 
+              class: "single-user", id: "#{experience.user_id}"%>
+              postet
+  <%= link_to "#{experience.name}", experience_path(experience), 
+              class: "single-experience-link" %>
+
+  <!-- TODO : is this eagerloaded ? -->
+  
   <% if experience.dishes %>
-    <ul>
+    <div id="<%= experience.id %>" class="owl-carousel">
       <%= render partial: experience.dishes %>
-      <% if experience.user == current_user %>
-        <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
-      <% end %>
-    </ul>
+    </div>
   <% end %>
-  <% if experience.user == current_user %>
-    <%= link_to 'Edit Experience', edit_experience_path(experience) %>
-    <%= link_to 'Delete Experience', experience_path(experience), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-experience" %>
-  <% end %>
+
 </div>
