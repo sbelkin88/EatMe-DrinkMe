@@ -3,8 +3,7 @@
     <%= (dish.dishpicture.file? ? image_tag(dish.dishpicture.url(:medium), class: 'dish-pic') : image_tag("No_image_available.svg", size: '500x500', class: 'dish-pic')) %> 
   </div>
   <div class="appear-on-hover dish-description">
-    <h3>Title</h3>
-    <p>comment comment
-     comment comment comment comment</p>
+    <h3><%= dish.title %></h3>
+    <p><%= dish.review.length > 40 ? dish.review[0..40] + "..." : dish.review %></p>
   </div>
 </div>
