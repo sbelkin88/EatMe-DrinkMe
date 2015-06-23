@@ -1,23 +1,10 @@
-<div class="single-dish" id="<%= dish.id %>"><li>
-  <%= dish.title %>
-  <ul>
-    <li>Venue: <%= dish.venue.name %></li>
-      <li>
-        <div class="reveal">
-          <%= (dish.dishpicture.file? ? image_tag(dish.dishpicture.url(:thumb)) : image_tag("No_image_available.svg", size: '150x150')) %>
-          <div class="hidden">
-            <div class="caption">
-              <div><%= dish.title %></div>
-                <div class="bottom"><%= dish.review %></div>
-            </div><!-- end of .caption -->
-          </div><!-- end of .hidden -->
-        </div><!-- end of .reveal -->
-      </li>
-    <li>Review: <%= dish.review %></li>
-  </ul>
-</li>
-  <% if dish.experience.user == current_user %>
-    <li><%= link_to 'Edit Dish', edit_experience_dish_path(dish.experience, dish) %></li>
-    <li><%= link_to 'Delete Dish', experience_dish_path(dish.experience, dish), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-dish" %></li>
-  <% end %>
+<div class="single-dish" id="<%= dish.id %>">
+  <div class="dish-pic-container">
+    <%= (dish.dishpicture.file? ? image_tag(dish.dishpicture.url(:thumb)) : image_tag("No_image_available.svg", size: '150x150', class: 'dish-pic')) %> 
+  </div>
+  <div class="appear-on-hover dish-description">
+    <h3>Title</h3>
+    <p>comment comment
+     comment comment comment comment</p>
+  </div>
 </div>

@@ -1,0 +1,49 @@
+TODO : took out where to put ?? 
+
+
+	out of dish:
+
+
+  <% if dish.experience.user == current_user %>
+    <li><%= link_to 'Edit Dish', edit_experience_dish_path(dish.experience, dish) %></li>
+    <li><%= link_to 'Delete Dish', experience_dish_path(dish.experience, dish), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-dish" %></li>
+  <% end %>
+
+
+           <li>
+  <%= dish.title %>
+  <ul>
+    <li>Venue: <%= dish.venue.name %></li>
+      <li>
+        <div class="reveal">
+ 
+          <div class="hidden">
+            <div class="caption">
+              <div><%= dish.title %></div>
+                <div class="bottom"><%= dish.review %></div>
+            </div><!-- end of .caption -->
+          </div><!-- end of .hidden -->
+        </div><!-- end of .reveal -->
+      </li>
+    <li>Review: <%= dish.review %></li>
+  </ul>
+</li>
+
+
+
+
+
+
+  out of experience:
+
+  
+  
+
+      <% if experience.user == current_user %>
+        <li><%= link_to 'Add another dish', new_experience_dish_path(experience) %></li>
+      <% end %>
+
+        <% if experience.user == current_user %>
+    <%= link_to 'Edit Experience', edit_experience_path(experience) %>
+    <%= link_to 'Delete Experience', experience_path(experience), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-experience" %>
+  <% end %>
