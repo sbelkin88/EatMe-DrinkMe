@@ -13,7 +13,7 @@ class ExperiencesController < ApplicationController
     elsif params[:search]
       @experiences = ExperiencesHelper.get_search_results(params[:search])
     else
-      @experiences = Experience.all.includes(:dishes)
+      @experiences = Experience.includes(:dishes).all
     end
   end
 
