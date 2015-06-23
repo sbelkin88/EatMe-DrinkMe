@@ -1,5 +1,9 @@
 <div><%= @experience.name %> posted by: <%= link_to "#{@experience.user.username}", user_path(@experience.user) %></div>
-<%= link_to 'Add another dish', new_experience_dish_path(@experience) %>
+
+<% if @experience.user == current_user %>
+  <%= link_to 'Add another dish', new_experience_dish_path(@experience) %>
+<% end %>
+
 <% if @experience.dishes %>
   <% @experience.dishes.each do |dish| %>
     <%= render partial: 'dishes/show', locals: {experience: @experience, dish: dish} %>
