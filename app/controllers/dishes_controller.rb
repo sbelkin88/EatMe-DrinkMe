@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  # Make sure to indent with spaces only, not tabs please!
 
 	def show
 		@experience = Experience.find(params[:experience_id])
@@ -34,6 +35,13 @@ class DishesController < ApplicationController
       @venue = Venue.create_venue(params[:place_id])
       @dish.venue = @venue
     end
+
+    # update_attributes is deprecated.  Proper way to do this:
+    # http://apidock.com/rails/ActiveRecord/Persistence/update
+    #
+    # if @dish.update(dish_params)
+    #  ...
+    # end
     @dish.update_attributes(dish_params)
     if @dish.save
       redirect_to experiences_path
@@ -44,7 +52,12 @@ class DishesController < ApplicationController
 
   def destroy
     @dish = Dish.find_by(id: params[:id])
+
+    # It would sure suck to hit this during demo:
     binding.pry
+    # Dont leave debug code in when you push.  This should be caught before
+    # being merged in from a PR
+    #
     @dish.destroy
     redirect_to experiences_path
   end

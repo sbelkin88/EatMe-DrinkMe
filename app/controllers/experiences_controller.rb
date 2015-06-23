@@ -1,7 +1,21 @@
 require 'pry'
 require 'net/http'
 class ExperiencesController < ApplicationController
-  include ExperiencesHelper
+  include ExperiencesHelper # NO no no no -
+  # The ExperiencesHelper is _not_ a helper regardless of what you've called it.
+  # What you've made is a module.  You can either:
+  # put it into the app/controllers/concerns directory and include/extend from there
+  # or
+  # in this case I think it makes more sense to have a model called "ExperienceSearch":
+  #
+  # class ExperienceSearch
+  #   def self.get_search_results
+  # ...
+  # end
+  #
+  # There is no need to include this module in this controller, and its confusing
+  # to the reader.  You are not actually including any methods, but rather just
+  # using it as a namespace to call a class method.
 
 	def show
 		@experience = Experience.find_by(id: params[:id])
@@ -45,6 +59,7 @@ class ExperiencesController < ApplicationController
 
   def update
     @experience = Experience.find_by(id: params[:id])
+    # Change this to @experience.update()
     if @experience.update_attributes(name: experience_params[:name])
       redirect_to experience_path(@experience)
     else

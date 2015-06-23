@@ -4,6 +4,24 @@ class Venue < ActiveRecord::Base
   has_many :dishes
   validates :name, :address, :city, :state, :zip, :phone, presence: true
 
+  # I think I would continue to refactor this code.  Probably I would make a method
+  # that created the options for the Venue object and then just call that method
+  # in the "new()".  It could also in turn call another method which retrieves the
+  # place_results from the remote API.  I would definitely take a shot at refactoring
+  # this until your create_venue() method looks like:
+  #
+  # def self.create_venue place
+  #   @venue ||= Venue.create_with(venue_params).find_or_create(place_id: place)
+  # end
+  #
+  # def venue_params
+  # ...
+  # end
+  #
+  # def fetch_from_api
+  # ...
+  # end
+  #
   def self.create_venue(place)
     venue = Venue.find_by(place_id: place)
     return venue if venue

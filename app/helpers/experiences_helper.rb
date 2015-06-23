@@ -1,3 +1,5 @@
+# Get this out of here!  Helpers are for use in views.  This code is _not_ for that.
+#
 module ExperiencesHelper
   def self.get_search_results(keyword)
     results = []

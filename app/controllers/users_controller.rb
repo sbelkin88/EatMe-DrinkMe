@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-
+		## TABS!!!!
 	def show
+		# You call @user.experiences in your view.  You need to make sure you dont
+		# make queries from your views, which this does in this case.  You should
+		# add .include(:experiences) to ensure that eager loading is accomplished.
 		@user = User.find_by(id: params[:id])
 	end
 

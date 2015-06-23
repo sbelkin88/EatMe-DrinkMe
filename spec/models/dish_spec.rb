@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+
+# OK - TEST PLEASE!  Especially any additional methods you've added to models
+# like User.follow! or
+
 describe Dish do
   let(:dish) {FactoryGirl.build(:dish)}
 
