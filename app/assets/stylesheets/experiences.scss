@@ -6,9 +6,37 @@
 .single-experience {
 	margin: 20px;
 
-	border: 3px solid blue;
+	border: 1px solid blue;
 
 	
 	width: 300px;
-	height: 300px;
+	height: 400px;
 }
+
+.experience-title {
+	width: 100%;
+	height: 10%;
+
+}
+
+.owl-carousel {
+	
+	width: 100%;
+	height: 90%;
+
+}
+
+.owl-wrapper-outer {
+	width: 100%;
+	height: 90%;
+}
+
+.owl-controls {
+	width: 100%;
+	height: 10%;
+}
+
+.owl-item { 
+	width: 100%;
+	height: 100%;
+	}

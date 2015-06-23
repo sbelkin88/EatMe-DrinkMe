@@ -9,11 +9,11 @@ class ExperiencesController < ApplicationController
 
   def index
     if params[:user]
-      @experiences = Experience.where(user_id: params[:user])
+      @experiences = Experience.includes(:dishes).where(user_id: params[:user])
     elsif params[:search]
       @experiences = ExperiencesHelper.get_search_results(params[:search])
     else
-      @experiences = Experience.all.includes(:dishes)
+      @experiences = Experience.includes(:dishes).all
     end
   end
 

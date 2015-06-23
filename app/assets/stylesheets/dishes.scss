@@ -4,44 +4,63 @@
 
 
 .single-dish {
-	border: 1px solid green;
+  
+  width: 100%;
+  height: 100%;
 
-	margin: 10px;
 }
 
 .dish-pic-container {
+
   width: 100%;
-  height: 70%;
+  height: auto;
+
+  /*border: 1px dashed blue;*/
 }
+
+
+
 
 .dish-pic {
-  position: relative;
-
-
+/*  border: 1px dashed red;*/
   width: 100%;
-
-  border: 1px dashed red;
-
-  z-index: 1;
+  height: 100%;
+  img {
+    content-fit: fill;
+  }
 }
+
 
 
 .appear-on-hover.dish-description {
-/*   position: relative;
-   z-index: 1;*/
    display: none;
-  position: relative;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .single-dish:hover {
   .appear-on-hover.dish-description {
-    
 
-    
-
-    z-index: 2;
-
-    margin: -40%;
   } 
 
 
