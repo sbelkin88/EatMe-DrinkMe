@@ -162,6 +162,11 @@ header {
     flex-wrap: wrap;
 }
 
+.update-buttons {
+    display: flex;
+    align-self: flex-end;
+}
+
 /*------------------------------------------- FOOTER*/
 
 footer {
