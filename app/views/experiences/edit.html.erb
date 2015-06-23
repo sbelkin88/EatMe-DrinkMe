@@ -1,22 +1,27 @@
-<h1>Edit Experience</h1>
-<%= form_for @experience do |f| %>
-  <% if @experience.errors.any? %>
-    <div id = 'error_explanation'>
-      <h2>
-        <%= pluralize(@experience.errors.count,'error') %> Prohibited this Experience from saving:
-      </h2>
-      <ul>
-        <% @experience.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h1 class="modal-title">Edit Experience</h1>
+</div>
+<div class="modal-body">
+  <%= form_for @experience do |f| %>
+    <% if @experience.errors.any? %>
+      <div id = 'error_explanation'>
+        <h2>
+          <%= pluralize(@experience.errors.count,'error') %> Prohibited this Experience from saving:
+        </h2>
+        <ul>
+          <% @experience.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+      <%= f.label :Experience_Name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
   <% end %>
-  <p>
-    <%= f.label :Experience_Name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+</div>

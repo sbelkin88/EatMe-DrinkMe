@@ -26,6 +26,7 @@ class DishesController < ApplicationController
   def edit
     @dish = Dish.find_by(id: params[:id])
     @experience = @dish.experience
+    render layout: !request.xhr?
   end
 
   def update
@@ -37,7 +38,7 @@ class DishesController < ApplicationController
     end
     @dish.update(dish_params)
     if @dish.save
-      redirect_to experiences_path
+      redirect_to experience_path(@experience)
     else
       render :edit
     end

@@ -42,6 +42,7 @@ class ExperiencesController < ApplicationController
 
   def edit
     @experience = Experience.find_by(id: params[:id])
+    render layout: !request.xhr?
   end
 
   def update
