@@ -153,7 +153,7 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-family: "Didact Gothic";
+    font-family: "Raleway";
 }
 
 #render-experiences {
@@ -161,6 +161,18 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+
+.close-up-dish-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dish-info{
+    width: auto;
+}
+
 
 /*------------------------------------------- FOOTER*/
 

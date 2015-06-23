@@ -1,0 +1,20 @@
+<div class="dish-info">
+  <%= (dish.dishpicture.file? ? image_tag(dish.dishpicture.url(:large)) : image_tag("No_image_available.svg", size: '150x150', class: 'dish-pic')) %>
+
+  <div class="close-up-dish-info">
+
+    <div class="venue-details">
+      <p> <%= dish.venue.name %> </p>
+      <p> <%= dish.venue.address %> </p>
+      <p> <%= dish.venue.city %> <%= dish.venue.state %>, <%= dish.venue.zip %></p>
+      <p> <%= dish.venue.phone %></p>
+      <p> <%= link_to "#{dish.venue.website}", dish.venue.website %></p>
+    </div>
+
+    <% if dish.experience.user == current_user %>
+      <div class="edit_delete_buttons">
+        <%= link_to 'Edit', edit_experience_dish_path(experience, dish) %> <%= link_to 'Delete', experience_dish_path(experience, dish), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-dish" %>
+      </div>
+    <% end %>
+  </div>
+</div>
