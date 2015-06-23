@@ -1,4 +1,4 @@
-<%= form_for @experience do |f| %>
+<%= bootstrap_form_for @experience do |f| %>
 
   <% if @experience.errors.any? %>
     <div id = 'error_explanation'>
@@ -12,14 +12,9 @@
       </ul>
     </div>
   <% end %>
-
-  <p>
-    <%= f.label :Experience_Name %>
-    <%= f.text_field :name %>
-  </p>
-
-
-  <h4>Dish:</h4>
+      
+  <%= f.text_field :name, label: "Experience Name" %>
+  
   <%= f.fields_for @experience.dishes.build do |dish_form| %>
     <% @experience.dishes.each do |dish| %>
       <% if dish.errors.any? %>
@@ -35,24 +30,16 @@
         </div>
       <% end %>
     <% end %>
-    <div>
-      Venue: <input class="controls" type="text" is="autocomplete-input"/>
-    </div>
-    <div>
-      <%= image_tag("powered-by-google-on-white.png", alt: 'powered by google') %>
-    </div>
-    <p>
-      <%= dish_form.label :Dish %>
-      <%= dish_form.text_field :title %>
-    </p>
-    <p>
-      <%= dish_form.label :Picture %>
-      <%= dish_form.file_field :dishpicture %>
-    </p>
-    <p>
-      <%= dish_form.label :Review %>
-      <%= dish_form.text_area :review %>
-    </p>
+    
+      <div class="form-group">
+        <label class="control-label required">Venue</label>
+        <input class="controls form-control" type="text" is="autocomplete-input"/>
+      </div>
+      
+      <%= dish_form.text_field :title, label: "Dish" %>
+      <%= dish_form.file_field :dishpicture, label: "Picture" %>
+      <%= dish_form.text_area :review, label: "Review" %>
+    
   <% end %>
   <%= f.submit %>
 <% end %>
