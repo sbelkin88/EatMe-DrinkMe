@@ -51,6 +51,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish = Dish.find_by(id: params[:id])
+    @experience = @dish.experience
     if @experience.user == current_user
       @dish.destroy
       redirect_to experiences_path
