@@ -20,8 +20,8 @@
 /*------------------------------------------- GENERAL
 */
 
-$headcolor: #373B44;
-$subnav: #ffffff;
+$headcolor: #66cccc;
+$subnav: #373B44;
 $footer: #373B44;
 
 /*------------------------------------------- GENERAL
@@ -84,16 +84,11 @@ header {
 }
 
 #top-header {
-	/*border: 2px solid black;*/
-
-	height: 65px;
+	height: 8%;
 	background-color: $headcolor;
 }
 
 #navigation-header {
-	/*border: 2px solid blue;*/
-
-	/*background-color: grey;*/
 	background-color: $subnav;
 }
 
@@ -101,26 +96,23 @@ header {
     font-family: "Oleo Script";
     font-size: 1.5em;
     color: white;
+    // padding: 1%;
+
 }
 
 #top-inner-header {
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 
 }
 
 #navigation-inner-header {
 	flex-direction: row;
 	justify-content: space-between;
-
-	height: 40px;
+	height: 50px;
 }
 
-.inner-header-user{
-    color: white;
-    font-family: "Open Sans";
-    font-size: 0.8em;
-}
+
 
 
 .nav-add-dish,
@@ -128,7 +120,7 @@ header {
 .nav-explore,
 .nav-my-experiences {
     display:flex;
-	flex: 1;
+    flex: 1;
 
     flex-direction: column;
     justify-content: center;
@@ -187,18 +179,23 @@ header {
 /*------------------------------------------- FOOTER*/
 
 footer {
-	height: 50px;
-	background-color: $footer;
+    height: 50px;
+    background-color: $footer;
     color: #ffffff;
-    font-family: "Raleway";
 }
 
 #inner-footer{
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     justify-content: center;
-    align-items: center;
+    font-size: 0.9em;
 }
 
+.inner-footer-user{
+    color: white;
+    font-family: "Open Sans";
+}
 
 
 /*------------------------------------------- SEARCH BAR*/

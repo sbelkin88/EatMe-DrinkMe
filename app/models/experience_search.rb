@@ -1,4 +1,4 @@
-module ExperiencesHelper
+class ExperienceSearch
   def self.get_search_results(keyword)
     results = []
     PgSearch.multisearch(keyword).each do |object|

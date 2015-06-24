@@ -1,7 +1,6 @@
 require 'pry'
 require 'net/http'
 class ExperiencesController < ApplicationController
-  include ExperiencesHelper
 
 	def show
 		@experience = Experience.find_by(id: params[:id])
@@ -11,7 +10,7 @@ class ExperiencesController < ApplicationController
     if params[:user]
       @experiences = Experience.includes(:dishes).where(user_id: params[:user])
     elsif params[:search]
-      @experiences = ExperiencesHelper.get_search_results(params[:search])
+      @experiences = ExperienceSearch.get_search_results(params[:search])
     else
       @experiences = Experience.includes(:dishes).all
     end
