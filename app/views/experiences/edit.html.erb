@@ -3,7 +3,7 @@
   <h1 class="modal-title">Edit Experience</h1>
 </div>
 <div class="modal-body">
-  <%= form_for @experience do |f| %>
+  <%= bootstrap_form_for @experience do |f| %>
     <% if @experience.errors.any? %>
       <div id = 'error_explanation'>
         <h2>
@@ -16,12 +16,7 @@
         </ul>
       </div>
     <% end %>
-    <p>
-      <%= f.label :Experience_Name %>
-      <%= f.text_field :name %>
-    </p>
-    <p>
+      <%= f.text_field :name, label: "Experience Name" %>
       <%= f.submit %>
-    </p>
   <% end %>
 </div>

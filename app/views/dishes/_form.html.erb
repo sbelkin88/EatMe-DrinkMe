@@ -19,7 +19,7 @@
     <%= image_tag("powered-by-google-on-white.png", alt: 'powered by google') %>
   </div>
 
-  <%= f.text_field :title, label: "Dish" %>
+  <%= f.text_field :title, label: "Dish Name" %>
   
   <% if @dish.dishpicture.file? %>
     <%= image_tag @dish.dishpicture.url(:thumb) %>
