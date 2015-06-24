@@ -15,18 +15,18 @@
 
   <div class="form-group">
     <label class="control-label required">Venue</label>
-    <input class="controls form-control" type="text" is="autocomplete-input"/>
+    <input class="controls form-control sizing" type="text" is="autocomplete-input"/>
     <%= image_tag("powered-by-google-on-white.png", alt: 'powered by google') %>
   </div>
 
-  <%= f.text_field :title, label: "Dish Name" %>
-  
+  <%= f.text_field :title, label: "Dish Name", class: "sizing" %>
+
   <% if @dish.dishpicture.file? %>
     <%= image_tag @dish.dishpicture.url(:thumb) %>
   <% end %>
 
   <%= f.file_field :dishpicture, label: "Picture" %>
-  <%= f.text_area :review, label: "Review" %>
+  <%= f.text_area :review, label: "Review", class: "sizing" %>
 
   <%= f.submit %>
 <% end %>
