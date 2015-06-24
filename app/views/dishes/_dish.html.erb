@@ -1,6 +1,14 @@
 <div class="single-dish" id="<%= dish.id %>">
   <div class="dish-pic-container">
-    <%= (dish.dishpicture.file? ? image_tag(dish.dishpicture.url(:medium), class: 'dish-pic') : image_tag("No_image_available.svg", size: '500x500', class: 'dish-pic')) %> 
+
+  	<% if dish.dishpicture.file? %>
+  		<%= link_to image_tag(dish.dishpicture.url(:medium), class: 'dish-pic'), experience_path(experience)  %>
+  		
+  	<% else %>
+  		<%= image_tag("No_image_available.svg", size: '500x500', class: 'dish-pic') %>
+  		
+  	<% end %>
+
   </div>
   <div class="appear-on-hover dish-description">
     <h3><%= dish.title %></h3>

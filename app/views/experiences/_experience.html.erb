@@ -15,7 +15,7 @@
 
   <% if experience.dishes %>
     <div id="<%= experience.id %>" class="owl-carousel carousel-container" >
-      <%= render partial: experience.dishes %>
+      <%= render partial: experience.dishes, locals: {experience: experience} %>
     </div>
   <% end %>
 
