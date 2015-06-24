@@ -1,5 +1,5 @@
 $(document).ready(function() {
- 
+
  	var owlCarousels =  $('#render-experiences').find('.owl-carousel')
 
  	for(var i = 0; i < owlCarousels.length; i++) {
@@ -11,9 +11,10 @@ $(document).ready(function() {
   	singleItem:true
 		});
 
- 	}
-
- 	
-
-
+ 	};
+  $("#navigation-inner-header [href]").each(function() {
+    if (this.href == window.location.href) {
+        $(this).closest("div").addClass("active-page");
+        }
+    });
 });
