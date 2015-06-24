@@ -43,12 +43,17 @@ body {
     justify-content: space-between;
     background-image: url(subtle_white_mini_waves.png);
     min-height: 100vh;
+    a {
+        color: black;
+        text-decoration: underline;
+    }
 }
 
 header, #main, footer {
     display: flex;
     width: 100%;
 }
+
 
 #main {
 	flex: 1;
