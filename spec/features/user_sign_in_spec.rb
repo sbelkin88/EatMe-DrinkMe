@@ -1,40 +1,34 @@
 require 'rails_helper'
 
 feature 'User signs in' do
+
+  given!(:user) { User.create(email: 'test1@gmail.com', username: 'asdfasdf', password: 'asdfasdf') }
+
   scenario 'with valid credentials' do
-    visit sign_in_path
-    fill_in 'Username', with: 'joe.example'
-    fill_in 'Password', with: 'passw0rd' 
-    click_on 'Sign In'
+    visit  new_user_session_path
+    fill_in 'Email', with: 'test1@gmail.com'
+    fill_in 'Password', with: 'asdfasdf' 
+    click_on "Log in"
 
-    expect(page).to have_content('You have successfully signed in!')
-  end
-end
-
-
-feature 'Visitor signs up' do
-  scenario 'with valid email and password' do
-    sign_up_with 'valid@example.com', 'password'
-
-    expect(page).to have_content('Sign out')
+    expect(page).to have_content('Signed in successfully.')
   end
 
   scenario 'with invalid email' do
-    sign_up_with 'invalid_email', 'password'
+  	visit  new_user_session_path
+    fill_in 'Email', with: 'invalid@gmail.com'
+    fill_in 'Password', with: 'asdfasdf' 
+    click_on "Log in"
 
-    expect(page).to have_content('Sign in')
+    expect(page).to have_content('Invalid email or password.')
   end
 
-  scenario 'with blank password' do
-    sign_up_with 'valid@example.com', ''
+  scenario 'with invalid email' do
+  	visit  new_user_session_path
+    fill_in 'Email', with: 'test1@gmail.com'
+    fill_in 'Password', with: '' 
+    click_on "Log in"
 
-    expect(page).to have_content('Sign in')
-  end
-
-  def sign_up_with(email, password)
-    visit sign_up_path
-    fill_in 'Email', with: email
-    fill_in 'Password', with: password
-    click_button 'Sign up'
+    expect(page).to have_content('Invalid email or password.')
   end
 end
+
