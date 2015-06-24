@@ -113,11 +113,6 @@ header {
 }
 
 
-.inner-header-user{
-    color: white;
-    font-family: "Open Sans";
-    font-size: 0.8em;
-}
 
 
 .nav-add-dish,
@@ -125,7 +120,7 @@ header {
 .nav-explore,
 .nav-my-experiences {
     display:flex;
-	flex: 1;
+    flex: 1;
 
     flex-direction: column;
     justify-content: center;
@@ -184,18 +179,23 @@ header {
 /*------------------------------------------- FOOTER*/
 
 footer {
-	height: 50px;
-	background-color: $footer;
+    height: 50px;
+    background-color: $footer;
     color: #ffffff;
-    font-family: "Raleway";
 }
 
 #inner-footer{
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     justify-content: center;
-    align-items: center;
+    font-size: 0.9em;
 }
 
+.inner-footer-user{
+    color: white;
+    font-family: "Open Sans";
+}
 
 
 /*------------------------------------------- SEARCH BAR*/
