@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -31,9 +30,9 @@ class User < ActiveRecord::Base
 
 	def following?(other_user)
 	  following.include?(other_user)
-	end
-	
+  end
 
+  
   def self.from_omniauth(auth)
     User.where(email: auth.info.email).first_or_create do |user|
       user.provider = auth.provider
