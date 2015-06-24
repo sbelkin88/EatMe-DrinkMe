@@ -1,8 +1,8 @@
 <h2>Log in</h2>
 
 <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.email_field :email, autofocus: true %>
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.email_field :email, autofocus: true, class: "sizing" %>
+    <%= f.password_field :password, autocomplete: "off", class: "sizing" %>
 
   <% if devise_mapping.rememberable? -%>
       <%= f.check_box :remember_me %>
