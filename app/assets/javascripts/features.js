@@ -14,7 +14,10 @@ $(document).ready(function() {
  	};
   $("#navigation-inner-header [href]").each(function() {
     if (this.href == window.location.href) {
-        $(this).closest("div").addClass("active-page");
+      var source = "/assets/icons/1434924558_user_people_man_human_head_person_black.svg"
+        // $(this).closest("div").addClass("active-page");
+        $(this).find("img").attr("src", source)
+        // debugger
         }
     });
 });

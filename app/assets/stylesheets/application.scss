@@ -20,8 +20,8 @@
 /*------------------------------------------- GENERAL
 */
 
-$headcolor: #373B44;
-$subnav: #ffffff;
+$headcolor: #66cccc;
+$subnav: #373B44;
 $footer: #373B44;
 
 /*------------------------------------------- GENERAL
@@ -84,16 +84,11 @@ header {
 }
 
 #top-header {
-	/*border: 2px solid black;*/
-
-	height: 65px;
+	height: 8%;
 	background-color: $headcolor;
 }
 
 #navigation-header {
-	/*border: 2px solid blue;*/
-
-	/*background-color: grey;*/
 	background-color: $subnav;
 }
 
@@ -101,11 +96,13 @@ header {
     font-family: "Oleo Script";
     font-size: 1.5em;
     color: white;
+    // padding: 1%;
+
 }
 
 #top-inner-header {
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 
 }
 
@@ -113,11 +110,11 @@ header {
 	flex-direction: row;
 	justify-content: space-between;
 
-	height: 40px;
+	height: 55px;
 }
 
 .active-page{
-    background-color: #FFFF99;
+    background-color: black;
 }
 
 .inner-header-user{
