@@ -41,7 +41,12 @@ class ExperiencesController < ApplicationController
 
   def edit
     @experience = Experience.find_by(id: params[:id])
-    render layout: !request.xhr?
+    if @experience.user == current_user
+      render layout: !request.xhr?
+    else
+      flash[:alert] = "You are not authorized to edit this event"
+      redirect_to experience_path(@experience)
+    end
   end
 
   def update
@@ -55,8 +60,13 @@ class ExperiencesController < ApplicationController
 
   def destroy
     @experience = Experience.find_by(id: params[:id])
-    @experience.destroy
-    redirect_to experiences_path
+    if @experience.user == current_user
+      @experience.destroy
+      redirect_to experiences_path
+    else
+      flash[:alert] = "You are not authorized to delete this event"
+      redirect_to experience_path(@experience)
+    end
   end
 
   private
@@ -64,4 +74,5 @@ class ExperiencesController < ApplicationController
   def experience_params
     params.require(:experience).permit(:name, dish: [:id, :title, :dishpicture, :review])
   end
+
 end

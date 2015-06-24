@@ -86,8 +86,10 @@ header {
 }
 
 #top-inner-header {
+    position: relative;
 	flex-direction: row;
 	justify-content: center;
+    align-items: center;
 }
 
 #navigation-inner-header {
@@ -114,10 +116,13 @@ header {
 .navbar-link{
     color: white;
 }
-    autocomplete-input{
-    display: block;
-    height: 25px;
+
+.user-signin-links {
+    position: absolute;
+    top: 1%;
+    right: 1%;
 }
+
 
 /*------------------------------------------- MAIN */
 
@@ -161,7 +166,7 @@ header {
 
 .solo-exp-btn-bar a {
     padding: 5px;
-    margin: 5px;    
+    margin: 5px;
 }
 
 /*------------------------------------------- FOOTER*/
@@ -180,10 +185,6 @@ footer {
     font-size: 0.9em;
 }
 
-.inner-footer-user{
-    color: white;
-    font-family: "Yanone Kaffeesatz";
-}
 
 /*------------------------------------------- SEARCH BAR*/
 #pac-input {
