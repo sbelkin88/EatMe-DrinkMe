@@ -1,34 +1,38 @@
-<h1>Edit Dish</h1>
-<%= bootstrap_form_for([@experience, @dish]) do |f| %>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h1 class="modal-title">Edit Dish</h1>
+</div>
+<div class="modal-body">
+  <%= bootstrap_form_for([@experience, @dish]) do |f| %>
 
-  <% if @dish.errors.any? %>
-    <div id = 'error_explanation'>
-      <h2>
-        <%= pluralize(@dish.errors.count,'error') %> Prohibited this Dish from saving:
-      </h2>
-      <ul>
-        <% @dish.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <% if @dish.errors.any? %>
+      <div id = 'error_explanation'>
+        <h2>
+          <%= pluralize(@dish.errors.count,'error') %> Prohibited this Dish from saving:
+        </h2>
+        <ul>
+          <% @dish.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <label class="control-label required">Venue</label>
+      <input class="controls form-control" type="text" is="autocomplete-input" placeholder="<%= @dish.venue.name %>"/>
     </div>
+
+
+    <%= f.text_field :title, label: "Dish" %>
+
+    <% if @dish.dishpicture.file? %>
+      <%= image_tag @dish.dishpicture.url(:thumb) %>
+    <% end %>
+
+    <%= f.file_field :dishpicture, label: "Picture" %>
+    <%= f.text_area :review %>
+    <%= f.submit %>
+
   <% end %>
-
-  <div class="form-group">
-    <label class="control-label required">Venue</label>
-    <input class="controls form-control" type="text" is="autocomplete-input" placeholder="<%= @dish.venue.name %>"/>
-  </div>
-
-
-  <%= f.text_field :title, label: "Dish" %>
-  
-  <% if @dish.dishpicture.file? %>
-    <%= image_tag @dish.dishpicture.url(:thumb) %>
-  <% end %>
-  
-  <%= f.file_field :dishpicture, label: "Picture" %>
-  <%= f.text_area :review %>
-  <%= f.submit %>
-
-<% end %>
-<%= link_to 'Back', experiences_path %>
+</div>
