@@ -1,17 +1,16 @@
-<div>
-  <%= @experience.name %> posted by: <%= link_to "#{@experience.user.username}", user_path(@experience.user) %>
+<h2>
+  <%= '"' + @experience.name + '"' %> posted by:&nbsp; <%= link_to "#{@experience.user.username}", user_path(@experience.user) %>
+</h2>
+<div class= "solo-exp-btn-bar">
+  <% if @experience.user == current_user %>
+    <%= link_to 'Add another dish', new_experience_dish_path(@experience), class: 'btn-default btn-lg', data: {toggle: "modal", target: "#myModal-new-dish"} %>
+      &nbsp;
+    <%= link_to 'Edit Experience', edit_experience_path(@experience), class: 'btn-default btn-lg', data: {toggle: "modal", target: "#myModal-edit-exp"} %>
+      &nbsp;
+    <%= link_to 'Delete Experience', experience_path(@experience), class: 'btn-default btn-lg', method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
 </div>
-
-<% if @experience.user == current_user %>
-  <%= link_to 'Add another dish', new_experience_dish_path(@experience), data: {toggle: "modal", target: "#myModal-new-dish"} %>
-<% end %>
-
-<div>
-  <%= link_to 'Edit Experience', edit_experience_path(@experience), data: {toggle: "modal", target: "#myModal-edit-exp"} %>
-</div>
-<div>
-  <%= link_to 'Delete Experience', experience_path(@experience), method: :delete, data: {confirm: 'Are you sure?'} %>
-</div>
+  
 
 <div id="myModal-new-dish" class="modal fade" role="dialog">
   <div class="modal-dialog">

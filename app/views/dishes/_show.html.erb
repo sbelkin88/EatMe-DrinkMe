@@ -23,6 +23,7 @@
     <% if dish.experience.user == current_user %>
       <div class="edit_delete_buttons">
         <%= link_to 'Edit', edit_experience_dish_path(experience, dish), data: {toggle: "modal", target: "#myModal-edit-dish"} %>
+        &nbsp;&nbsp;
         <%= link_to 'Delete', experience_dish_path(experience, dish), method: :delete, data: {confirm: 'Are you sure?'}, class: "delete-dish" %>
       </div>
     <% end %>

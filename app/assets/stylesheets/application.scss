@@ -113,6 +113,11 @@ header {
 }
 
 
+.inner-header-user{
+    color: white;
+    font-family: "Yanone Kaffeesatz";
+    font-size: 1em;
+}
 
 
 .nav-add-dish,
@@ -145,7 +150,9 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-family: "Raleway";
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 150%;
+
 }
 
 #render-experiences {
@@ -173,6 +180,17 @@ header {
 
 .user-info{
     align-self: center;
+}
+
+.solo-exp-btn-bar{
+    padding: 15px;
+}
+
+
+.solo-exp-btn-bar a {
+    padding: 5px;
+    margin: 5px;
+    
 }
 
 
