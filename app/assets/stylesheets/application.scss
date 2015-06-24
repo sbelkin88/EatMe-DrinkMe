@@ -109,13 +109,9 @@ header {
 #navigation-inner-header {
 	flex-direction: row;
 	justify-content: space-between;
-
-	height: 55px;
+	height: 50px;
 }
 
-.active-page{
-    background-color: black;
-}
 
 .inner-header-user{
     color: white;
