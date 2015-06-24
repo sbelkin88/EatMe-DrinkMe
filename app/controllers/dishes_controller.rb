@@ -26,7 +26,12 @@ class DishesController < ApplicationController
   def edit
     @dish = Dish.find_by(id: params[:id])
     @experience = @dish.experience
-    render layout: !request.xhr?
+    if @experience.user == current_user
+      render layout: !request.xhr?
+    else
+      flash[:alert] = "You are not authorized to edit this event"
+      redirect_to experience_path(@experience)
+    end
   end
 
   def update
@@ -46,8 +51,13 @@ class DishesController < ApplicationController
 
   def destroy
     @dish = Dish.find_by(id: params[:id])
-    @dish.destroy
-    redirect_to experiences_path
+    if @experience.user == current_user
+      @dish.destroy
+      redirect_to experiences_path
+    else
+      flash[:alert] = "You are not authorized to delete this event"
+      redirect_to experience_path(@experience)
+    end
   end
 
 	private
