@@ -1,10 +1,5 @@
-// Place all the styles related to the Dishes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .single-dish {
-  
+
   width: 100%;
   height: 100%;
   position: relative;
@@ -13,8 +8,7 @@
     color: white;
     visibility: hidden;
     position: absolute;
-    top: 3%; 
-
+    top: 3%;
     padding: 5%;
   }
 
@@ -39,92 +33,11 @@
     z-index: 1;
 
     .dish-pic {
-    /*  border: 1px dashed red;*/
       width: 100%;
       height: 100%;
-      /*visibility: hidden;*/
       img {
         content-fit: contain;
       }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===============================================
-// Reveal module
-// =============================================== */
- 
-/*.reveal .hidden { display: block !important; visibility: visible !important;}
-.product:hover .reveal img { opacity: 1; }
-.reveal { position: relative; }
-.reveal .hidden { 
-  position: absolute; 
-  z-index: -1;
-  top: 0; 
-  width: 100%; 
-  height: 100%;  
-  opacity: 0;
-  -webkit-transition: opacity 0.3s ease-in-out;
-  -moz-transition: opacity 0.3s ease-in-out;
-  -o-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out;  
-}
-.reveal:hover .hidden { 
-  z-index: 100000;
-  opacity: 1;    
-}
-.reveal .caption {
-  position: absolute;
-  top: 0;  
-  display: table;
-  width: 100%;
-  height: 100%;
-  background-color: white; 
-  background-color: rgba(255, 255, 255, 0.7);
-  font: 13px/1.6 sans-serif;
-  text-transform: uppercase;
-  color: #333;
-  letter-spacing: 1px;
-  text-align: center;
-  text-rendering: optimizeLegibility;
-}
-.bottom {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-}
- 
-@media (min-width: 480px) and (max-width: 979px) {
-  .reveal .caption { 
-    font-size: 11px; 
-  }
-}*/
