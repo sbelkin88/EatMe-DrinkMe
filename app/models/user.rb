@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
 
   include PgSearch
   multisearchable :against => :username
-  
+
 	has_many :experiences
 
-	
+
 	has_many :active_relationships,  class_name:  "Relationship",
 	                                   foreign_key: "follower_id",
 	                                   dependent:   :destroy
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 	  following.include?(other_user)
   end
 
-  
+
   def self.from_omniauth(auth)
     User.where(email: auth.info.email).first_or_create do |user|
       user.provider = auth.provider
