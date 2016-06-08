@@ -1,5 +1,18 @@
 # EatMe-DrinkMe
 
+This project is a social media platform to find reviews on specific food dishes and follow other users’ eating experiences.
+
+##Setup:
+
+Ensure you have rails installed on your local machine.  If not, in your terminal, run `sudo gem install rails`.  You will be prompted for your password.
+
+Clone this repository locally, and navigate into it.
+
+Run `bundle install` to install all gems necessary for the project.
+
+Run `rails s` to start the server.  Navigate to http://localhost:3000 in your browser to see the app running.
+
+
 ##Team Members:
 - Samantha Belkin
 - Mendel Schneerson
